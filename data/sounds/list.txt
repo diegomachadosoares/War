@@ -1,0 +1,6 @@
+5
+data/sounds/damage.wav
+data/sounds/explosion1.wav
+data/sounds/explosion2.wav
+data/sounds/shot1.wav
+data/sounds/shot2.wav

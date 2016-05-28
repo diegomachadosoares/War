@@ -1,0 +1,8 @@
+7
+data/music/music1.wav 60.0 1 1 1 5.0
+data/music/music2.wav 60.0 1 1 1 5.0
+data/music/music3.wav 60.0 1 1 1 5.0
+data/music/music4.wav 60.0 1 1 1 5.0
+data/music/music5.wav 60.0 1 1 1 5.0
+data/music/music6.wav 60.0 1 1 1 5.0
+data/music/music7.wav 60.0 1 1 1 5.0
