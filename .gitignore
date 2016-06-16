@@ -18,3 +18,6 @@ nb-configuration.xml
 # Play specific #
 JPlay/build/
 JPlay/dist/
+
+# Vim swap files #
+*~
