@@ -6,16 +6,16 @@ import java.util.List;
  *
  * @author diegomachado
  */
-public class Jogador {
+public class Player {
     
     private String name;
     private String color;
-    private List<Territorio> Territorios;
-    private Objetivo obj;
-    private List<Carta> cartas;
+    private List<Territory> Territorios;
+    private Objective obj;
+    private List<Card> cartas;
     
     
-    public Jogador(String name, String color){
+    public Player(String name, String color){
         this.name = name;
         this.color = color;
     }

@@ -16,7 +16,7 @@ import java.util.List;
  *
  * @author AleGomes
  */
-public class Tabuleiro {
+public class Map {
 
     private Window window;
 
@@ -27,7 +27,7 @@ public class Tabuleiro {
     private Keyboard keyboard;
     private Mouse mouse;
 
-    public Tabuleiro(Window window) {
+    public Map(Window window) {
         this.window = window;
 
         this.keyboard = window.getKeyboard();

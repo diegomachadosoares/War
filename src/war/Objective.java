@@ -4,6 +4,6 @@ package war;
  *
  * @author diegomachado
  */
-class Objetivo {
+class Objective {
     
 }
