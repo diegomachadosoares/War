@@ -7,6 +7,11 @@ nbdist/
 nbactions.xml
 nb-configuration.xml
 
+# Play specific #
+JPlay/build/
+JPlay/dist/
+JPlay/nbproject/private/
+
 # Class Files #
 *.class
 
@@ -14,10 +19,6 @@ nb-configuration.xml
 *.jar
 *.war
 *.ear
-
-# Play specific #
-JPlay/build/
-JPlay/dist/
 
 # Vim swap files #
 *~
