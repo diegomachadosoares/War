@@ -16,7 +16,7 @@ import java.util.List;
  *
  * @author AleGomes
  */
-public class Map {
+public class MapView {
 
     private Window window;
 
@@ -27,7 +27,7 @@ public class Map {
     private Keyboard keyboard;
     private Mouse mouse;
 
-    public Map(Window window) {
+    public MapView(Window window) {
         this.window = window;
 
         this.keyboard = window.getKeyboard();
