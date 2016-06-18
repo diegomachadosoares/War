@@ -27,16 +27,27 @@ public class Objective {
         objectives.put(10, "Destruir totalmente OS EXÉRCITOS AMARELOS ou conquistar 18 territórios caso ele não esteja em jogo.");
         objectives.put(11, "Destruir totalmente OS EXÉRCITOS VERMELHOS ou conquistar 18 territórios caso ele não esteja em jogo.");
         objectives.put(12, "Destruir totalmente OS EXÉRCITOS PRETOS ou conquistar 18 territórios caso ele não esteja em jogo.");
-        objectives.put(13, "Destruir totalmente OS EXÉRCITOS BRANCO ou conquistar 18 territórios caso ele não esteja em jogo.");
+        objectives.put(13, "Destruir totalmente OS EXÉRCITOS BRANCOS ou conquistar 18 territórios caso ele não esteja em jogo.");
         objectives.put(14, "Destruir totalmente OS EXÉRCITOS VERDES ou conquistar 18 territórios caso ele não esteja em jogo.");
     }
 
     public static String getObjective() {
-        return objectives.get((int) (1 + Math.random() * 14));
+        String o;
+        while (true) {
+            int pos = (int) (1 + Math.random() * 14);
+            if (objectives.get(pos) != null) {
+                o = objectives.get(pos);
+                objectives.remove(pos);
+                break;
+            } else {
+                pos = (int) (1 + Math.random() * 14);
+            }
+        }
+        return o;
     }
-    
+
     public static Objective getInstance() {
-        if (instance == null){
+        if (instance == null) {
             initializeInstance();
         }
         return instance;
