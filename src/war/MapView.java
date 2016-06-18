@@ -32,6 +32,10 @@ public class MapView {
 
         this.keyboard = window.getKeyboard();
         this.mouse = window.getMouse();
+        buttons.add(new Button("data/gameplay/BRASIL2.png",200,400,this.mouse));
+        buttons.add(new Button("data/gameplay/PERU.png",130,400,this.mouse));
+        buttons.add(new Button("data/gameplay/ARGENTINA.png",130,460,this.mouse));
+        buttons.add(new Button("data/gameplay/VENEZUELA.png",135,320,this.mouse));
     }
 
     public void setBackground(String img) { // Muda o fundo do menu
@@ -44,6 +48,7 @@ public class MapView {
             
             if (keyboard.keyDown(Keyboard.ESCAPE_KEY)) {
                 this.window.exit();
+                
             }
         }
     }
