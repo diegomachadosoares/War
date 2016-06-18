@@ -6,7 +6,7 @@ package war;
  */
 public class Dice {
 
-    public int playDice(){
+    public static int playDice(){
         return (int) (1 + Math.random() * 6);
     }
 
