@@ -54,13 +54,19 @@ public class BoardTest {
             Territory t2 = new Territory("t2", null, 0);
             Territory t3 = new Territory("t3", null, 0);
             
-            Territory n1 = new Territory("n1", null, 0);
-            Territory n2 = new Territory("n2", null, 0);
-            Territory n3 = new Territory("n3", null, 0);
+            Territory n1 = new Territory("t2", null, 0);
+            Territory n2 = new Territory("t3", null, 0);
+            Territory n3 = new Territory("t1", null, 0);
+            
+            n1.addNeighbor(t1);
+            n2.addNeighbor(t2);
+            n3.addNeighbor(t3);
             
             t1.addNeighbor(n1);
             t2.addNeighbor(n2);
             t3.addNeighbor(n3);
+            
+            
             
             List<Territory> territoryList = new ArrayList<>();
             
@@ -73,29 +79,16 @@ public class BoardTest {
             List<Continent> continentsList = new ArrayList<>();
             
             continentsList.add(c1);
-           /*
-            if(continentsList.get(0).equals(board.continents.get(0))){
-                System.out.println("São iguais.");
-            }else{
-                System.out.println("São diferentes.");
+            
+            System.out.println("Board");
+            for(Territory t : board.continents.get(0).getTerritories()){
+                System.out.println(t.getName()+" "+t.getNeighbors().get(0).getName());
             }
             
-            System.out.println("Daqui");
-            System.out.println(continentsList.get(0).getName());
-            for(Territory territory : continentsList.get(0).getTerritories()){
-                System.out.println(territory.getName());
-                System.out.println(territory.getNeighbors().get(0).getName());
+            System.out.println("Aqui");
+            for(Territory t : continentsList.get(0).getTerritories()){
+                System.out.println(t.getName()+" "+t.getNeighbors().get(0).getName());
             }
-            
-            System.out.println("Do board");
-            System.out.println(board.continents.get(0).getName());
-            for(Territory territory : board.continents.get(0).getTerritories()){
-                System.out.println(territory.getName());
-                System.out.println(territory.getNeighbors().get(0).getName());
-            }
-            */
-            
-            
             
             assertEquals(board.continents, continentsList);
         } catch (IOException ex) {
