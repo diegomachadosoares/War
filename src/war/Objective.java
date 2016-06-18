@@ -33,14 +33,13 @@ public class Objective {
 
     public static String getObjective() {
         String o;
+        int pos;
         while (true) {
-            int pos = (int) (1 + Math.random() * 14);
+            pos = (int) (1 + Math.random() * 14);
             if (objectives.get(pos) != null) {
                 o = objectives.get(pos);
                 objectives.remove(pos);
                 break;
-            } else {
-                pos = (int) (1 + Math.random() * 14);
             }
         }
         return o;
