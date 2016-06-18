@@ -32,13 +32,15 @@ public class Objective {
     }
 
     public static String getObjective() {
-        String o;
+        String o = null;
         int pos;
         while (true) {
             pos = (int) (1 + Math.random() * 14);
-            if (objectives.get(pos) != null) {
+            if ((objectives.get(pos) != null) ){
                 o = objectives.get(pos);
                 objectives.remove(pos);
+                break;
+            } else if (objectives.isEmpty()){
                 break;
             }
         }
