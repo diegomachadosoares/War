@@ -42,7 +42,7 @@ class Territory {
     }
 
     int getTroops() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.troops;
     }
 
     @Override
@@ -50,17 +50,16 @@ class Territory {
         if (obj == this) {
             return true;
         }
-
+        
         if (obj == null || obj.getClass() != this.getClass()) {
             return false;
         }
-
+        
         Territory territory = (Territory) obj;
 
         return this.name.equalsIgnoreCase(territory.getName())
                 && this.neighbors.equals(territory.getNeighbors())
-                && this.getOwner().equals(territory.getOwner())
-                && this.troops == territory.getNumberOfTerritories();
+                && this.troops == territory.getTroops();
     }
 
     /**
@@ -82,19 +81,5 @@ class Territory {
      */
     public void setOwner(Player owner) {
         this.owner = owner;
-    }
-
-    /**
-     * @return the troops
-     */
-    public int getNumberOfTerritories() {
-        return troops;
-    }
-
-    /**
-     * @param troops the troops to set
-     */
-    public void setNumberOfTerritories(int troops) {
-        this.troops = troops;
     }
 }
