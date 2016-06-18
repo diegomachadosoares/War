@@ -12,7 +12,9 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -38,6 +40,7 @@ public class Board {
 
         ArrayList<Territory> territories;
         ArrayList<Territory> allTerritories = new ArrayList<>();
+        //Map allTerritories = new HashMap();
         ArrayList<Continent> continents = new ArrayList<>();
         
         for (int i = 0; i < territoriesLines.size(); i++) {
@@ -50,7 +53,9 @@ public class Board {
                 territories.add(new Territory(territoryName, null, 0));
                 allTerritories.add(new Territory(territoryName, null, 0));
             }
-            continents.add(new Continent(continentName, territories));
+            Continent c = new Continent(continentName, territories);
+            continents.add(c);
+            //allTerritories.put(c, territories);
         }
         
         
@@ -61,6 +66,7 @@ public class Board {
         } catch (IOException ex) {
             System.out.println(ex.toString());
         }
+
         
         for (int i = 0; i < allTerritories.size(); i++) {
             String neighborsLine = getNeighborsLine(allTerritories.get(i),neighboorsLines);
@@ -71,15 +77,14 @@ public class Board {
         }
         
         for (int i = 0; i < continents.size(); i++) {
-            for (int j = 0; j < continents.get(i).territories.size(); j++) {
+            for (int j = 0; j < continents.get(i).getTerritories().size(); j++) {
                 for (int k = 0; k < allTerritories.size(); k++) {
-                    if(allTerritories.get(k).getName().equalsIgnoreCase(continents.get(i).territories.get(j).getName())){
-                        continents.get(i).territories.get(j).setNeighbors(allTerritories.get(k).getNeighbors());
+                    if(allTerritories.get(k).getName().equalsIgnoreCase(continents.get(i).getTerritories().get(j).getName())){
+                        continents.get(i).getTerritories().get(j).setNeighbors(allTerritories.get(k).getNeighbors());
                     }
                 }
             }
         }
-        
         return continents;
     }
 
@@ -94,7 +99,7 @@ public class Board {
 
     private Territory getTerritory(String neighbor, ArrayList<Territory> allTerritories) {
         for(Territory territory : allTerritories){
-            if(neighbor.equals(territory.getName())){
+            if(neighbor.equalsIgnoreCase(territory.getName())){
                 return territory;
             }
         }
