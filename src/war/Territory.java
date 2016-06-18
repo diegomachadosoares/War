@@ -18,6 +18,22 @@ class Territory {
         this.numberOfTerritories = numberOfTerritories;
     }
 
+    public void addNeighbor(Territory neighbor){
+        this.neighbors.add(neighbor);
+    }
+    
+    public void setNeighbors(List<Territory> neighbors){
+        this.neighbors = neighbors;
+    }
+    
+    public List<Territory> getNeighbors(){
+        return this.neighbors;
+    }
+    
+    public String getName(){
+        return this.name;
+    }
+    
     void addTroops(int n) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
