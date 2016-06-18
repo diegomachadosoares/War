@@ -50,7 +50,6 @@ public class BoardTest {
         try {
             Board board = new Board("territories_test.txt", "neighbors_test.txt");
             
-            
             Territory t1 = new Territory("t1", null, 0);
             Territory t2 = new Territory("t2", null, 0);
             Territory t3 = new Territory("t3", null, 0);
@@ -74,25 +73,34 @@ public class BoardTest {
             List<Continent> continentsList = new ArrayList<>();
             
             continentsList.add(c1);
-           
-            System.out.println("Do board");
-            System.out.println(board.continents.get(0).name);
-            for(Territory territory : board.continents.get(0).territories){
-                System.out.println(territory.getName());
+           /*
+            if(continentsList.get(0).equals(board.continents.get(0))){
+                System.out.println("São iguais.");
+            }else{
+                System.out.println("São diferentes.");
             }
             
             System.out.println("Daqui");
-            System.out.println(continentsList.get(0).name);
-            for(Territory territory : continentsList.get(0).territories){
+            System.out.println(continentsList.get(0).getName());
+            for(Territory territory : continentsList.get(0).getTerritories()){
                 System.out.println(territory.getName());
+                System.out.println(territory.getNeighbors().get(0).getName());
             }
+            
+            System.out.println("Do board");
+            System.out.println(board.continents.get(0).getName());
+            for(Territory territory : board.continents.get(0).getTerritories()){
+                System.out.println(territory.getName());
+                System.out.println(territory.getNeighbors().get(0).getName());
+            }
+            */
+            
+            
             
             assertEquals(board.continents, continentsList);
         } catch (IOException ex) {
             System.out.println(ex.toString());
         }
-        
-        
     }
 }
 
