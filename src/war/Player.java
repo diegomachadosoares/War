@@ -53,8 +53,8 @@ public class Player {
     public void attack(Territory my, Territory enemy){
         int enemy_troops = enemy.getTroops();
         int my_troops = my.getTroops();
-        int []enemy_dices = null;
-        int []my_dices = null;
+        int[] enemy_dices = null;
+        int[] my_dices = null;
 
         for (int i = 0; i < enemy_troops; i++) {
             enemy_dices[i] = Dice.playDice();
