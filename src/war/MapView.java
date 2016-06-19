@@ -9,8 +9,11 @@ import JPlay.GameImage;
 import JPlay.Keyboard;
 import JPlay.Mouse;
 import JPlay.Window;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  *
@@ -32,26 +35,21 @@ public class MapView {
 
         this.keyboard = window.getKeyboard();
         this.mouse = window.getMouse();
-        buttons.add(new Button("data/gameplay/BRASIL2.png",200,400,this.mouse));
-        buttons.add(new Button("data/gameplay/PERU.png",130,400,this.mouse));
-        buttons.add(new Button("data/gameplay/ARGENTINA.png",130,460,this.mouse));
-        buttons.add(new Button("data/gameplay/VENEZUELA.png",135,320,this.mouse));
-        buttons.add(new Button("data/gameplay/CENTRAL-AMERICA.png",80,250,this.mouse));
-        buttons.add(new Button("data/gameplay/Eastern United States.png",100,200,this.mouse));
-        buttons.add(new Button("data/gameplay/Western United States.png",60,170,this.mouse));
-        buttons.add(new Button("data/gameplay/ALBERTA.png",74,103,this.mouse));
-        buttons.add(new Button("data/gameplay/ONTARIO.png",130,108,this.mouse));
-        buttons.add(new Button("data/gameplay/QUEBEC.png",180,108,this.mouse));
-        buttons.add(new Button("data/gameplay/Northwest Territory.png",83,65,this.mouse));
-        buttons.add(new Button("data/gameplay/ALASKA.png",20,65,this.mouse));
-        buttons.add(new Button("data/gameplay/ICELAND.png",287,82,this.mouse));
-        buttons.add(new Button("data/gameplay/GREATBRITAIN.png",280,110,this.mouse));
-        buttons.add(new Button("data/gameplay/GREENLAND.png",280,25,this.mouse));
-        buttons.add(new Button("data/gameplay/Northern-Europe.png",360,104,this.mouse));
-        buttons.add(new Button("data/gameplay/Western-Europe.png",280,160,this.mouse));
-        buttons.add(new Button("data/gameplay/Soutern-Europe.png",370,160,this.mouse));
-        buttons.add(new Button("data/gameplay/Scandinavia.png",380,60,this.mouse));
-        buttons.add(new Button("data/gameplay/UKRAINE.png",430,90,this.mouse));
+        
+        try {
+            File file = new File("data/pais_button.ini");
+            Scanner reader = new Scanner(file);
+
+            int max = reader.nextInt();
+            for (int i = 0; i < max; i++) {
+            buttons.add(new Button(reader.next(), reader.nextInt(), reader.nextInt(), this.mouse));
+
+            }
+            
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex.toString());
+        }
+
        
         
     }
