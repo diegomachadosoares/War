@@ -44,7 +44,6 @@ public class Board {
         ArrayList<Continent> continents = new ArrayList<>();
 
         int territoryNumber = 0;
-        //continents = new ArrayList<>();
         for (int i = 0; i < territoriesLines.size(); i++) {
             String continentName = territoriesLines.get(i).split(";")[0];
             
@@ -60,11 +59,6 @@ public class Board {
             //allTerritories.put(c, territories);
         }
 
-        for (Continent c : continents) {
-            for (Territory t : c.getTerritories()) {
-                System.out.println(t.getID() + " " + t.getName());
-            }
-        }
 
         //A partir dos terrorios e da lista de vizinhos, atribuir os vizinhos de cada territorio
         ArrayList<String> neighboorsLines = new ArrayList<>();
@@ -91,7 +85,6 @@ public class Board {
                 }
             }
         }
-
         return continents;
     }
 
