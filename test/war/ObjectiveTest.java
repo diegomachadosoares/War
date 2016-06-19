@@ -9,7 +9,7 @@ import org.junit.Test;
 public class ObjectiveTest {
 
     @Test
-    public void testObjective(String[] args) {
+    public void testObjective() {
         try {
             int numPlayers = 6; //Number of players
             Player[] players = new Player[numPlayers]; //container for the player list
@@ -18,12 +18,12 @@ public class ObjectiveTest {
                 players[i] = new Player("joao" + i.toString(), "Azul" + i.toString());
             }
             //Each player must have an objective!
-            for (int i = 0; i < players.length; i++) {
-                players[i].chooseObjective();
+            for (Player player : players) {
+                player.chooseObjective();
             }
             //shows each player objective
-            for (int i = 0; i < players.length; i++) {
-                System.out.println(players[i].getObjective());
+            for (Player player : players) {
+                System.out.println(player.getObjective());
             }
         } catch(Exception e) {
             System.out.println(e.toString());
