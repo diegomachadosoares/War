@@ -44,7 +44,14 @@ public class MapView {
         buttons.add(new Button("data/gameplay/QUEBEC.png",180,108,this.mouse));
         buttons.add(new Button("data/gameplay/Northwest Territory.png",83,65,this.mouse));
         buttons.add(new Button("data/gameplay/ALASKA.png",20,65,this.mouse));
-        buttons.add(new Button("data/gameplay/GREENLAND.png",260,25,this.mouse));
+        buttons.add(new Button("data/gameplay/ICELAND.png",287,82,this.mouse));
+        buttons.add(new Button("data/gameplay/GREATBRITAIN.png",280,110,this.mouse));
+        buttons.add(new Button("data/gameplay/GREENLAND.png",280,25,this.mouse));
+        buttons.add(new Button("data/gameplay/Northern-Europe.png",360,104,this.mouse));
+        buttons.add(new Button("data/gameplay/Western-Europe.png",280,160,this.mouse));
+        buttons.add(new Button("data/gameplay/Soutern-Europe.png",370,160,this.mouse));
+        buttons.add(new Button("data/gameplay/Scandinavia.png",380,60,this.mouse));
+        buttons.add(new Button("data/gameplay/UKRAINE.png",430,90,this.mouse));
        
         
     }
