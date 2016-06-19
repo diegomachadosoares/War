@@ -13,12 +13,14 @@ class Territory {
     private List<Territory> neighbors;
     private Player owner;
     private int troops;
+    private final int id;
 
-    public Territory(String name, Player owner, int troops) {
+    public Territory(String name, Player owner, int id) {
         this.name = name;
         this.neighbors = new ArrayList<>();
         this.owner = owner;
-        this.troops = troops;
+        this.troops = 1;
+        this.id = id;
     }
 
     public void addNeighbor(Territory neighbor) {
@@ -43,6 +45,10 @@ class Territory {
 
     int getTroops() {
         return this.troops;
+    }
+    
+    int getID(){
+        return this.id;
     }
 
     @Override
