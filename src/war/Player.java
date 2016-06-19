@@ -77,4 +77,11 @@ public class Player {
 	}
 	return ret;
     }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
 }
