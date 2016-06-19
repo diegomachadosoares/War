@@ -48,8 +48,8 @@ public class TerritoryTest {
         System.out.println("equals");
 
         
-        Territory obj = new Territory("t1", new Player("Joao", "Blue"), 0);
-        Territory instance = new Territory("t1", new Player("Joao", "Blue"), 0);
+        Territory obj = new Territory("t1", new Player("Joao", "Blue",1), 0);
+        Territory instance = new Territory("t1", new Player("Joao", "Blue",1), 0);
 
         assertEquals(obj, instance);
         // TODO review the generated test code and remove the default call to fail.
