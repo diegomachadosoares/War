@@ -1,24 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package war;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import war.Board;
 
 /**
  *
@@ -50,13 +40,13 @@ public class BoardTest {
         try {
             Board board = new Board("territories_test.txt", "neighbors_test.txt");
             
-            Territory t1 = new Territory("t1", null, 0);
-            Territory t2 = new Territory("t2", null, 0);
-            Territory t3 = new Territory("t3", null, 0);
+            Territory t1 = new Territory("t1", null, 1);
+            Territory t2 = new Territory("t2", null, 2);
+            Territory t3 = new Territory("t3", null, 3);
             
-            Territory n1 = new Territory("t2", null, 0);
-            Territory n2 = new Territory("t3", null, 0);
-            Territory n3 = new Territory("t1", null, 0);
+            Territory n1 = new Territory("t2", null, 4);
+            Territory n2 = new Territory("t3", null, 5);
+            Territory n3 = new Territory("t1", null, 6);
             
             n1.addNeighbor(t1);
             n2.addNeighbor(t2);
