@@ -36,6 +36,17 @@ public class MapView {
         buttons.add(new Button("data/gameplay/PERU.png",130,400,this.mouse));
         buttons.add(new Button("data/gameplay/ARGENTINA.png",130,460,this.mouse));
         buttons.add(new Button("data/gameplay/VENEZUELA.png",135,320,this.mouse));
+        buttons.add(new Button("data/gameplay/CENTRAL-AMERICA.png",80,250,this.mouse));
+        buttons.add(new Button("data/gameplay/Eastern United States.png",100,200,this.mouse));
+        buttons.add(new Button("data/gameplay/Western United States.png",60,170,this.mouse));
+        buttons.add(new Button("data/gameplay/ALBERTA.png",74,103,this.mouse));
+        buttons.add(new Button("data/gameplay/ONTARIO.png",130,108,this.mouse));
+        buttons.add(new Button("data/gameplay/QUEBEC.png",180,108,this.mouse));
+        buttons.add(new Button("data/gameplay/Northwest Territory.png",83,65,this.mouse));
+        buttons.add(new Button("data/gameplay/ALASKA.png",20,65,this.mouse));
+        buttons.add(new Button("data/gameplay/GREENLAND.png",260,25,this.mouse));
+       
+        
     }
 
     public void setBackground(String img) { // Muda o fundo do menu
