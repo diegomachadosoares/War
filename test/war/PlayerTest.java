@@ -41,7 +41,7 @@ public class PlayerTest {
     /**
      * Test of getColor method, of class Player.
      */
-    @Test
+    //@Test
     public void testGetColor() {
         System.out.println("getColor");
         Player instance = null;
@@ -52,24 +52,11 @@ public class PlayerTest {
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of getObjective method, of class Player.
-     */
-    @Test
-    public void testGetObjective() {
-        System.out.println("getObjective");
-        Player instance = null;
-        String expResult = "";
-        String result = instance.getObjective();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of chooseObjective method, of class Player.
      */
-    @Test
+    //@Test
     public void testChooseObjective() {
         System.out.println("chooseObjective");
         Player instance = null;
@@ -81,7 +68,7 @@ public class PlayerTest {
     /**
      * Test of distributeTroops method, of class Player.
      */
-    @Test
+    //@Test
     public void testDistributeTroops() {
         System.out.println("distributeTroops");
         Territory t = null;
@@ -95,7 +82,7 @@ public class PlayerTest {
     /**
      * Test of attack method, of class Player.
      */
-    @Test
+    //@Test
     public void testAttack() {
         System.out.println("attack");
         Territory my = null;
