@@ -1,7 +1,7 @@
 package war;
 
-import java.util.List;
 import java.util.Arrays;
+import java.util.LinkedList;
 
 /**
  *
@@ -9,32 +9,25 @@ import java.util.Arrays;
  */
 public class Player {
 
-    private String name;
-    private String color;
-    private List<Territory> Territories;
+    private final String name;
+    private final String color;
     private String objective;
-    private List<Card> cards;
-
-    public Player(String name, String color) {
+    private final int id;
+    private LinkedList<Territory> territories;
+    private LinkedList<Card> cards;
+   
+    public Player(String name, String color, int id) {
         this.name = name;
         this.color = color;
+        this.id = id;
     }
-
-    // Gets and Sets
+    
     public String getName() {
         return this.name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getColor() {
         return this.color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
     }
 
     public String getObjective() {
@@ -46,8 +39,12 @@ public class Player {
         this.objective = obj.getObjective();
     }
 
-    public void distributeTroops(Territory t, int n){
-        t.addTroops(n);
+    public boolean distributeTroops(Territory t, int n){
+        if (territories.contains(t)){
+            t.addTroops(n);
+            return true;
+        }
+        return false;
     }
 
     public void attack(Territory my, Territory enemy){
