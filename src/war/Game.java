@@ -42,7 +42,7 @@ public class Game {
     private void runGameplay() throws FileNotFoundException, IOException {
         
         //Mostrar mapa
-        Map tabuleiro = new Map(window);
+        MapView tabuleiro = new MapView(window);
         tabuleiro.setBackground("data/gameplay/mapa-mundi.png");
         tabuleiro.run();
     }

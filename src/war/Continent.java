@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package war;
 
 import java.util.List;
@@ -13,10 +12,53 @@ import java.util.List;
  * @author AleGomes
  */
 public class Continent {
-  List<Territory> territories;
-    String name;
-    public Continent(String name, List<Territory> territories){
+
+    private List<Territory> territories;
+    private String name;
+
+    public Continent(String name, List<Territory> territories) {
         this.name = name;
         this.territories = territories;
-    }  
+    }
+
+    public List<Territory> getTerritories() {
+        return this.territories;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        Continent continent = (Continent) obj;
+
+        return this.getName().equalsIgnoreCase(continent.getName())
+                && this.territories.equals(continent.getTerritories());
+    }
+
+    /**
+     * @param territories the territories to set
+     */
+    public void setTerritories(List<Territory> territories) {
+        this.territories = territories;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
 }
