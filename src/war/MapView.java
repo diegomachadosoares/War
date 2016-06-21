@@ -22,8 +22,10 @@ import java.util.Scanner;
 public class MapView {
 
     private Window window;
-
+    private int indicePressed;
+    private boolean pressed;
     private GameImage background;
+    private GameImage shadow;
 
     List<Button> buttons = new ArrayList<Button>(); // Lista de botões
 
@@ -32,7 +34,7 @@ public class MapView {
 
     public MapView(Window window) {
         this.window = window;
-
+        this.shadow = new GameImage("data/gameplay/shadow.png");
         this.keyboard = window.getKeyboard();
         this.mouse = window.getMouse();
         
@@ -62,7 +64,9 @@ public class MapView {
         while (true) {
             this.draw();
             
-            buttonPressed();
+            if(buttonPressed() != -1){
+            pressed=true;
+            }
             
             if (keyboard.keyDown(Keyboard.ESCAPE_KEY)) {
                 this.window.exit();
@@ -73,22 +77,33 @@ public class MapView {
 
     
     public int buttonPressed(){
+    int indice = -1;
         for (int i = 0; i < buttons.size(); i++) {
             if (this.buttons.get(i).isButtonPressed()){
-                return i;
+                this.indicePressed = i;
+                indice = i;
+                
+                System.out.println("OLAAAAAAAAAAAAAA");
+                return indice;
             }
             
         }
         
-        return -1;
+     return indice;
             
     }
     
     public void draw() {
-        this.background.draw();
+        this.background.draw();  
         for( int i = 0; i < buttons.size() ; i++){
           buttons.get(i).draw();
         }
+        
+        if (this.pressed) {
+            this.shadow.draw();
+            System.out.println(indicePressed);
+        }
+       
            
    
         this.window.display();
