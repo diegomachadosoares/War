@@ -62,6 +62,8 @@ public class MapView {
         while (true) {
             this.draw();
             
+            buttonPressed();
+            
             if (keyboard.keyDown(Keyboard.ESCAPE_KEY)) {
                 this.window.exit();
                 
@@ -69,6 +71,19 @@ public class MapView {
         }
     }
 
+    
+    public int buttonPressed(){
+        for (int i = 0; i < buttons.size(); i++) {
+            if (this.buttons.get(i).isButtonPressed()){
+                return i;
+            }
+            
+        }
+        
+        return -1;
+            
+    }
+    
     public void draw() {
         this.background.draw();
         for( int i = 0; i < buttons.size() ; i++){
