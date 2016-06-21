@@ -30,7 +30,11 @@ public class Button {
     public boolean isMouseOn() {
         return mouse.isOverObject(image);
     }
-
+    
+    public boolean isButtonPressed() {
+        return mouse.isOverObject(image)&& mouse.isLeftButtonPressed();
+    }
+    
     public Sprite getSprite() {
         return image;
     }
