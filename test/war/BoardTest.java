@@ -46,13 +46,10 @@ public class BoardTest {
         } catch (IOException ex) {
             Logger.getLogger(BoardTest.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
     }
     
     @Test
     public void testIfCreatedAllTerritories() {
-        
         try {
             Board board = new Board("territorios.txt", "vizinhos.txt");
 
@@ -61,7 +58,6 @@ public class BoardTest {
             for(Continent c : board.continents){
                 numberOfTerritories += c.getTerritories().size();
             }
-            
             assertEquals(numberOfTerritories, 42);
         } catch (IOException ex) {
             Logger.getLogger(BoardTest.class.getName()).log(Level.SEVERE, null, ex);
