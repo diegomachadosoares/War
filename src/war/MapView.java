@@ -66,6 +66,8 @@ public class MapView {
             
             if(buttonPressed() != -1){
             pressed=true;
+            Janela_Pais frame = new Janela_Pais();
+            frame.setVisible(true);
             }
             
             if (keyboard.keyDown(Keyboard.ESCAPE_KEY)) {
@@ -83,7 +85,6 @@ public class MapView {
                 this.indicePressed = i;
                 indice = i;
                 
-                System.out.println("OLAAAAAAAAAAAAAA");
                 return indice;
             }
             
@@ -101,7 +102,8 @@ public class MapView {
         
         if (this.pressed) {
             this.shadow.draw();
-            System.out.println(indicePressed);
+
+
         }
        
            
