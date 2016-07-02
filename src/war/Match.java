@@ -7,7 +7,9 @@ package war;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Stack;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,15 +25,15 @@ public class Match {
     List<Player> players;
     Board board;
 
-    public Match(){
-        
+    public Match() {
+
     }
-    
+
     public Match(List<Player> players, Board board) {
         this.players = players;
         this.board = board;
     }
-    
+
     public void distributeTerritories() {
         //Distribuir territorios
         int territoriesCount = 0;
@@ -53,10 +55,20 @@ public class Match {
                 territoriesCount++;
             }
         }
+        
+        List<Territory> listaTerritorios = new ArrayList<>();
+       
+        for (int i = 0; i < this.board.continents.size(); i++) {
+            for (int j = 0; j < this.board.continents.get(i).getTerritories().size(); j++) {
+                listaTerritorios.add(this.board.continents.get(i).getTerritories().get(j));
+            }
+        }
+        
+        this.board.territories = listaTerritorios;
+        
     }
-    
-    public void distributeObjectives(){
-        //Distribuir objetivos
+
+    public void distributeObjectives() {
         for (int i = 0; i < players.size(); i++) {
             players.get(i).chooseObjective();
         }
@@ -66,11 +78,9 @@ public class Match {
         boolean acabou = true;
 
         //Inicializacao
-        
-
         //Rodada de fortificação
         for (int i = 0; i < players.size(); i++) {
-
+            
         }
 
         while (!acabou) {
@@ -90,5 +100,5 @@ public class Match {
             return numberOfTroops;
         }
         return 0;
-    }
+    }   
 }
