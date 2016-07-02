@@ -66,7 +66,7 @@ public class MapView {
             
             if(buttonPressed() != -1){
             pressed=true;
-            Janela_Pais frame = new Janela_Pais();
+            Janela_Pais frame = new Janela_Pais(this);
             frame.setVisible(true);
             }
             
@@ -109,6 +109,10 @@ public class MapView {
            
    
         this.window.display();
+    }
+    
+    public void setPressed(boolean x){
+    this.pressed=x;
     }
 
 }

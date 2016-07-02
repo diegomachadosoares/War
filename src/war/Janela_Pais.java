@@ -16,10 +16,11 @@ import javax.swing.JFrame;
  */
 public class Janela_Pais extends JDialog implements ActionListener {
 
-    
-    public Janela_Pais() {
+        private MapView map;
         
-
+    public Janela_Pais(MapView map) {
+        
+        this.map=map;
 	setBounds(550, 300, 618, 330);
 	getContentPane().setLayout(null);
                 
@@ -224,7 +225,12 @@ public class Janela_Pais extends JDialog implements ActionListener {
     private javax.swing.JTextField tropasTextField;
     // End of variables declaration//GEN-END:variables
 
-    
+    @Override
+    public void dispose() {
+    this.map.setPressed(false);
+    super.dispose();
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         Object obj = e.getSource();

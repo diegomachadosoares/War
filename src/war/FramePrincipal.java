@@ -18,8 +18,7 @@ public class FramePrincipal extends javax.swing.JFrame {
      * Creates new form FramePrincipal
      */
     public FramePrincipal() {
-        setBounds(105, 147, 618, 330);
-	setTitle("Cadastro de Livros");
+        setBounds(800,600, 618, 330);
 	setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         initComponents();
         int width = 800;
