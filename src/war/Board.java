@@ -22,9 +22,11 @@ import java.util.Map;
 public class Board {
 
     List<Continent> continents;
+    List<Territory> territories;
 
     public Board(String continentsFile, String neighborsFile) throws FileNotFoundException, IOException {
         this.continents = generateContinents(continentsFile, neighborsFile);
+        this.territories = generateTerritories();
     }
 
     private List<Continent> generateContinents(String continentsFile, String neighborsFile) {
@@ -84,7 +86,9 @@ public class Board {
                     }
                 }
             }
-        }
+        }        
+        
+        
         return continents;
     }
 
@@ -104,5 +108,15 @@ public class Board {
             }
         }
         return null;
+    }
+
+    private List<Territory> generateTerritories() {
+        ArrayList<Territory> t = new ArrayList<Territory>();
+        for(Continent c : this.continents){
+            for(Territory te : this.territories){
+                t.add(te);
+            }
+        }
+        return t;
     }
 }
