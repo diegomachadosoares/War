@@ -49,7 +49,7 @@ class Territory {
             return 1;
         }
         this.troops--;
-        return 0;
+        return this.getTroops();
     }
 
     int getTroops() {
