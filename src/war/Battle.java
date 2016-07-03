@@ -27,7 +27,13 @@ public class Battle {
         for (int i = 0; i <= nTroops; i++) {
             this.att_dices[i] = Dice.playDice();
         }
-        for (int i = 0; i < this.def.getTroops(); i++) {
+        int lim;
+        if (this.def.getTroops() > 3){
+            lim = 3;
+        } else {
+            lim = this.def.getTroops() ;
+        }
+        for (int i = 0; i < lim; i++) {
             this.def_dices[i] = Dice.playDice();
         }
         Arrays.sort(this.att_dices);
@@ -36,17 +42,25 @@ public class Battle {
         Territory[] winners = checkWinner(this.att_dices, this.def_dices);
         return winners;
     }
+    
+    private int[] getDices(Territory t){
+        if (t.equals(this.att)){
+            return this.att_dices;
+        }
+        return this.def_dices;
+    }
 
     private Territory[] checkWinner(int[] att, int[] def) {
         Territory[] ret = new Territory[3];
-        for (int i = 0; i < def.length; i++) {
+        int defTroops =0;
+        for (int i = 3; i <= 0; i--) {
             if (att[i] > def[i]) {
-                ret[i] = this.att;
-                int a = this.def.subTroop();
-                if (a==1){
+                defTroops = this.def.subTroop();
+                if (defTroops==1){
                     this.def.setOwner(this.att.getOwner());
                     return ret;
                 }
+                ret[i] = this.att;
             } else {
                 ret[i] = this.def;
                 this.def.subTroop();
