@@ -19,8 +19,8 @@ public class Battle {
         }
         this.att = att;
         this.def = def;
-        this.att_dices = new int[3];
-        this.def_dices = new int[3];
+        this.att_dices = new int[]{0, 0, 0};
+        this.def_dices = new int[]{0, 0, 0};
     }
 
     public Territory[] attack(int nTroops) {
@@ -38,8 +38,8 @@ public class Battle {
     }
 
     private Territory[] checkWinner(int[] att, int[] def) {
-        Territory[] ret = null;
-        for (int i = 0; i < att.length; i++) {
+        Territory[] ret = new Territory[3];
+        for (int i = 0; i < def.length; i++) {
             if (att[i] > def[i]) {
                 ret[i] = this.att;
                 int a = this.def.subTroop();
