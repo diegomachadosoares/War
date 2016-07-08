@@ -6,6 +6,8 @@
 
 package war;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 /**
  *
  * @author AleGomes
@@ -13,4 +15,14 @@ package war;
 public class Controller {
     
     //A controller chama a Match e a mapview
+    
+    
+   
+    public Territory getTerritory(int i) throws NotImplementedException { 
+        
+        return ;
+    }
+    
+    
+    
 }

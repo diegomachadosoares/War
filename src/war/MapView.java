@@ -65,6 +65,7 @@ public class MapView {
             this.draw();
             
             if(buttonPressed() != -1){
+            
             pressed=true;
             Janela_Pais frame = new Janela_Pais(this);
             frame.setVisible(true);
@@ -115,4 +116,7 @@ public class MapView {
     this.pressed=x;
     }
 
+    public int getIndice(){
+    return indicePressed;
+    }
 }

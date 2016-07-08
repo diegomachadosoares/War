@@ -17,9 +17,10 @@ import javax.swing.JFrame;
 public class Janela_Pais extends JDialog implements ActionListener {
 
         private MapView map;
+        private Controller controller;
         
     public Janela_Pais(MapView map) {
-        
+        controller = Controller.getinstance();
         this.map=map;
 	setBounds(550, 300, 618, 330);
 	getContentPane().setLayout(null);
@@ -27,6 +28,9 @@ public class Janela_Pais extends JDialog implements ActionListener {
         
         meuInit();
         atacarButton.addActionListener(this);
+
+                
+        
     }
 
     /**
@@ -41,13 +45,17 @@ public class Janela_Pais extends JDialog implements ActionListener {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
         jLabel2 = new javax.swing.JLabel();
-        jogadorTextField = new javax.swing.JTextField();
-        tropasTextField = new javax.swing.JTextField();
         atacarButton = new javax.swing.JButton();
         moverButton = new javax.swing.JButton();
         jogadorLabel = new javax.swing.JLabel();
         tropasLabel = new javax.swing.JLabel();
         paisLabel = new javax.swing.JLabel();
+        paisLabel.setText(controller.getTerritory(map.getIndice()).getName());
+        nomeJogadorLabel = new javax.swing.JLabel();
+        nomeJogadorLabel.setText(controller.getTerritory(map.getIndice()).getOwner().getName());
+        
+        numeroTropasLabel = new javax.swing.JLabel();
+        numeroTropasLabel.setText(Integer.toString(controller.getTerritory(map.getIndice()).getTroops()));
 
         jTextField2.setText("jTextField2");
 
@@ -56,14 +64,6 @@ public class Janela_Pais extends JDialog implements ActionListener {
         jScrollPane1.setViewportView(jTextPane1);
 
         jLabel2.setText("jLabel2");
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        jogadorTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jogadorTextFieldActionPerformed(evt);
-            }
-        });
 
         atacarButton.setText("Atacar");
 
@@ -83,7 +83,7 @@ public class Janela_Pais extends JDialog implements ActionListener {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(tropasLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tropasTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(numeroTropasLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(atacarButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -91,22 +91,22 @@ public class Janela_Pais extends JDialog implements ActionListener {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jogadorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jogadorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(nomeJogadorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(25, Short.MAX_VALUE))
             .addComponent(paisLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(paisLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jogadorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jogadorLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tropasTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tropasLabel))
+                .addComponent(paisLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jogadorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+                    .addComponent(nomeJogadorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tropasLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                    .addComponent(numeroTropasLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(atacarButton)
@@ -126,13 +126,13 @@ public class Janela_Pais extends JDialog implements ActionListener {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
         jLabel2 = new javax.swing.JLabel();
-        jogadorTextField = new javax.swing.JTextField();
-        tropasTextField = new javax.swing.JTextField();
         atacarButton = new javax.swing.JButton();
         moverButton = new javax.swing.JButton();
         jogadorLabel = new javax.swing.JLabel();
         tropasLabel = new javax.swing.JLabel();
         paisLabel = new javax.swing.JLabel();
+        nomeJogadorLabel = new javax.swing.JLabel();
+        numeroTropasLabel = new javax.swing.JLabel();
 
         jTextField2.setText("jTextField2");
 
@@ -141,14 +141,6 @@ public class Janela_Pais extends JDialog implements ActionListener {
         jScrollPane1.setViewportView(jTextPane1);
 
         jLabel2.setText("jLabel2");
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jogadorTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jogadorTextFieldActionPerformed(evt);
-            }
-        });
 
         atacarButton.setText("Atacar");
 
@@ -168,7 +160,7 @@ public class Janela_Pais extends JDialog implements ActionListener {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(tropasLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tropasTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(numeroTropasLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(atacarButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -176,22 +168,22 @@ public class Janela_Pais extends JDialog implements ActionListener {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jogadorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jogadorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(nomeJogadorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(25, Short.MAX_VALUE))
             .addComponent(paisLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(paisLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jogadorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jogadorLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tropasTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tropasLabel))
+                .addComponent(paisLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jogadorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+                    .addComponent(nomeJogadorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tropasLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                    .addComponent(numeroTropasLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(atacarButton)
@@ -200,10 +192,6 @@ public class Janela_Pais extends JDialog implements ActionListener {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jogadorTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jogadorTextFieldActionPerformed
-        // TODOadd your handling code here:
-    }//GEN-LAST:event_jogadorTextFieldActionPerformed
 //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -218,11 +206,11 @@ public class Janela_Pais extends JDialog implements ActionListener {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JLabel jogadorLabel;
-    private javax.swing.JTextField jogadorTextField;
     private javax.swing.JButton moverButton;
+    private javax.swing.JLabel nomeJogadorLabel;
+    private javax.swing.JLabel numeroTropasLabel;
     private javax.swing.JLabel paisLabel;
     private javax.swing.JLabel tropasLabel;
-    private javax.swing.JTextField tropasTextField;
     // End of variables declaration//GEN-END:variables
 
     @Override
