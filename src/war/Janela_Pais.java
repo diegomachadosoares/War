@@ -20,7 +20,7 @@ public class Janela_Pais extends JDialog implements ActionListener {
         private Controller controller;
         
     public Janela_Pais(MapView map) {
-        controller = Controller.getinstance();
+        controller = Controller.getInstance();
         this.map=map;
 	setBounds(550, 300, 618, 330);
 	getContentPane().setLayout(null);
