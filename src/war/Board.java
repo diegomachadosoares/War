@@ -40,17 +40,25 @@ public class Board {
             System.out.println(ex.toString());
         }
 
-        ArrayList<Territory> territories;
-        ArrayList<Territory> allTerritories = new ArrayList<>();
+        
+        ArrayList<Territory> territories; //Temporaria apenas para criar a lista de territorios de cada continente
+        ArrayList<Territory> allTerritories = new ArrayList<>(); //Usada para associar os territorios com seus vizinhos
         //Map allTerritories = new HashMap();
         ArrayList<Continent> continents = new ArrayList<>();
 
         int territoryNumber = 0;
+        
+        //Cada linha do arquivo possui um continente e seus territorios.
+        //Para cada continente (linha do arquivo)
         for (int i = 0; i < territoriesLines.size(); i++) {
+            //Arquivo de continentes no formato nome-continente;nome-territorio]
             String continentName = territoriesLines.get(i).split(";")[0];
             
             territories = new ArrayList<>();
+            //continete;territorio1;territorio2;territorio3;...
+            //Para cada cada territorio dessa linha
             for (int j = 1; j < territoriesLines.get(i).split(";").length; j++) {
+                
                 String territoryName = territoriesLines.get(i).split(";")[j];
                 territories.add(new Territory(territoryName, null, territoryNumber));
                 allTerritories.add(new Territory(territoryName, null, territoryNumber));
@@ -70,14 +78,20 @@ public class Board {
             System.out.println(ex.toString());
         }
 
+        //Arquivo de vizinhos é no formato territorio;vizinho1;vizinho2;...
+        //Para cada territorio
         for (int i = 0; i < allTerritories.size(); i++) {
             String neighborsLine = getNeighborsLine(allTerritories.get(i), neighboorsLines);
 
+            //Para cada vizinho desse territorio obter o objeto territory
             for (int j = 1; j < neighborsLine.split(";").length; j++) {
-                allTerritories.get(i).addNeighbor(getTerritory(neighborsLine.split(";")[j], allTerritories));
+                allTerritories.get(i).addNeighbor(obtainTerritory(neighborsLine.split(";")[j], allTerritories));
             }
         }
 
+        //A partir da lista allTerritories, que tem os terriorios e seus vizinhos
+        //atualizamos a lista de territorios de cada continente.
+        
         for (int i = 0; i < continents.size(); i++) {
             for (int j = 0; j < continents.get(i).getTerritories().size(); j++) {
                 for (int k = 0; k < allTerritories.size(); k++) {
@@ -92,6 +106,7 @@ public class Board {
         return continents;
     }
 
+    //Encontrar a linha do arquivo referente ao territorio desejado.
     private String getNeighborsLine(Territory territory, ArrayList<String> neighboorsLines) {
         for (String line : neighboorsLines) {
             if (line.split(";")[0].equalsIgnoreCase(territory.getName())) {
@@ -101,7 +116,8 @@ public class Board {
         return "";
     }
 
-    private Territory getTerritory(String neighbor, ArrayList<Territory> allTerritories) {
+    //Obter o objeto Territory do vizinho a partir do nome dele.
+    private Territory obtainTerritory(String neighbor, ArrayList<Territory> allTerritories) {
         for (Territory territory : allTerritories) {
             if (neighbor.equalsIgnoreCase(territory.getName())) {
                 return territory;
