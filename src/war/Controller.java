@@ -1,28 +1,47 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package war;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  *
- * @author AleGomes
+ * @author diegomachado
  */
 public class Controller {
     
-    //A controller chama a Match e a mapview
+    private static Controller INSTANCE;
+
+    private static void initializeInstance() {
+        if(INSTANCE == null){
+            INSTANCE = new Controller();
+        }
+    }
+    private Board board;
+    private String contFile = "data/continent.txt";
+    private String terrFile = "data/territories.txt";
+    private String neighFile = "data/neighbors.txt";
     
-    
-   
-    public Territory getTerritory(int i) throws NotImplementedException { 
-        
-        return ;
+    private Controller() {
+        try{
+            this.board = new Board(contFile, terrFile, neighFile);
+        } catch (FileNotFoundException e){
+        } catch (IOException io){
+        }
     }
     
+    public static Controller getInstance() {
+        if(INSTANCE == null){
+            initializeInstance();
+        }
+        return INSTANCE;
+    }
     
+    private static class ControllerHolder {
+
+        private static final Controller INSTANCE = new Controller();
+    }
     
+    public Territory getTerritory(int id){
+        return board.getTerritory(id);
+    }
 }
