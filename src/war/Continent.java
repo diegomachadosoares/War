@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package war;
 
 import java.util.List;
@@ -14,11 +9,13 @@ import java.util.List;
 public class Continent {
 
     private List<Territory> territories;
-    private String name;
+    private final String name;
+    private final int id;
 
-    public Continent(String name, List<Territory> territories) {
+    public Continent(String name, int id, List<Territory> territories) {
         this.name = name;
         this.territories = territories;
+        this.id = id;
     }
 
     public List<Territory> getTerritories() {
@@ -52,13 +49,6 @@ public class Continent {
      * @return the name
      */
     public String getName() {
-        return name;
-    }
-
-    /**
-     * @param name the name to set
-     */
-    public void setName(String name) {
-        this.name = name;
+        return this.name;
     }
 }
