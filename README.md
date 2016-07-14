@@ -12,7 +12,7 @@ Java 8 / OpenJDK 8
 
 Team
 ------
-@diegomachadosoares
-@GomesAle
-@Hitay
-thalesathayde
+Diego M. Soares (github.com/diegomachadosoares)
+Alexandre Gomes (github.com/GomesAle)
+Arthur Sanshez (github.om/Hitay)
+Thales Athaíde (github.com/thalesathayde)
