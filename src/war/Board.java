@@ -47,7 +47,7 @@ public class Board {
         try{
             Scanner sc = new Scanner(new FileInputStream(new File(continentsFile)));            
             String currline;
-            String[] split, t;
+            String[] split;
             List<Territory> tlist;
             while(sc.hasNextLine()){
                 tlist = new ArrayList();
