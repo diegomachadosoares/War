@@ -2,6 +2,8 @@ package war;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -40,8 +42,27 @@ public class Controller {
 
         private static final Controller INSTANCE = new Controller();
     }
+    public Map getTerritories() {
+        return board.getTerritories();
+    }
+
+    public Map getContinents() {
+        return board.getContinents();
+    }
     
-    public Territory getTerritory(int id){
-        return board.getTerritory(id);
+    public Map getNeighborhoods() {
+        return board.getNeighborhoods();
+    }
+
+    public Territory getTerritory(Integer i) {
+        return board.getTerritory(i);
+    }
+    
+    public Continent getContinent(Integer i) {
+        return board.getContinent(i);
+    }
+    
+    public List<Territory> getNeighborhood(Integer i) {
+        return board.getNeighborhood(i);
     }
 }
