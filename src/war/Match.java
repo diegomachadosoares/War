@@ -1,18 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package war;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Stack;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -56,17 +45,6 @@ public class Match {
                 territoriesCount++;
             }
         }
-        
-        List<Territory> listaTerritorios = new ArrayList<>();
-       
-        for (int i = 0; i < this.board.continents.size(); i++) {
-            for (int j = 0; j < this.board.continents.get(i).getTerritories().size(); j++) {
-                listaTerritorios.add(this.board.continents.get(i).getTerritories().get(j));
-            }
-        }
-        
-        this.board.territories = listaTerritorios;
-        
     }
 
     public void distributeObjectives() {
