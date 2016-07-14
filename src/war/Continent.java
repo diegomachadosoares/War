@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class Continent {
 
-    private List<Territory> territories;
+    private final List<Territory> territories;
     private final String name;
     private final int id;
 
@@ -36,13 +36,6 @@ public class Continent {
 
         return this.getName().equalsIgnoreCase(continent.getName())
                 && this.territories.equals(continent.getTerritories());
-    }
-
-    /**
-     * @param territories the territories to set
-     */
-    public void setTerritories(List<Territory> territories) {
-        this.territories = territories;
     }
 
     /**
