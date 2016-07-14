@@ -34,22 +34,22 @@ public class Board {
             Scanner sc = new Scanner(new FileInputStream(new File(territoriesFile)));
             String currline;
             String[] split;
-            while(sc.hasNextLine()){
+            while (sc.hasNextLine()) {
                 currline = sc.nextLine();
                 split = currline.split(":");
-                this.territories.put(Integer.parseInt(split[0]),new Territory(split[1], null, Integer.parseInt(split[0])));
+                this.territories.put(Integer.parseInt(split[0]), new Territory(split[1], null, Integer.parseInt(split[0])));
             }
-        } catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
         }
     }
 
     private void readContinents(String continentsFile) throws FileNotFoundException {
-        try{
-            Scanner sc = new Scanner(new FileInputStream(new File(continentsFile)));            
+        try {
+            Scanner sc = new Scanner(new FileInputStream(new File(continentsFile)));
             String currline;
             String[] split;
             List<Territory> tlist;
-            while(sc.hasNextLine()){
+            while (sc.hasNextLine()) {
                 tlist = new ArrayList();
                 currline = sc.nextLine();
                 split = currline.split(":");
@@ -59,7 +59,7 @@ public class Board {
                 Continent c = new Continent(split[1], Integer.parseInt(split[0]), tlist);
                 this.continents.put(Integer.parseInt(split[0]), c);
             }
-        } catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
         }
     }
 
@@ -67,22 +67,28 @@ public class Board {
         Scanner sc = new Scanner(new FileInputStream(new File(neighborhoodFile)));
         String currline;
         String[] split;
-        List<Territory> tlist = new ArrayList();
-        while(sc.hasNextLine()){
+        List<Territory> tlist;
+        while (sc.hasNextLine()) {
+            tlist = new ArrayList();
             currline = sc.nextLine();
             split = currline.split(":");
+            for (int i = 1; i < split.length; i++) {
+                tlist.add(getTerritory(Integer.parseInt(split[i])));
+            }
+            this.neighborhood.put(Integer.parseInt(split[0]), tlist);
         }
     }
     
-    public Map getTerritories(){
+
+    public Map getTerritories() {
         return this.territories;
     }
-    
+
     public Map getContinents() {
         return this.continents;
     }
-    
-    public Territory getTerritory(Integer i){
+
+    public Territory getTerritory(Integer i) {
         return this.territories.get(i);
     }
 }
