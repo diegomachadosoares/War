@@ -48,11 +48,12 @@ public class Board {
             Scanner sc = new Scanner(new FileInputStream(new File(continentsFile)));            
             String currline;
             String[] split, t;
-            List<Territory> tlist = new ArrayList();
+            List<Territory> tlist;
             while(sc.hasNextLine()){
+                tlist = new ArrayList();
                 currline = sc.nextLine();
                 split = currline.split(":");
-                for (int i = 2; i < split.length - 1; i++) {
+                for (int i = 2; i < split.length; i++) {
                     tlist.add(getTerritory(Integer.parseInt(split[i])));
                 }
                 Continent c = new Continent(split[1], Integer.parseInt(split[0]), tlist);
