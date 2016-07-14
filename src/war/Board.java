@@ -87,8 +87,20 @@ public class Board {
     public Map getContinents() {
         return this.continents;
     }
+    
+    public Map getNeighborhoods() {
+        return this.neighborhood;
+    }
 
     public Territory getTerritory(Integer i) {
         return this.territories.get(i);
+    }
+    
+    public Continent getContinent(Integer i) {
+        return this.continents.get(i);
+    }
+    
+    public List<Territory> getNeighborhood(Integer i) {
+        return this.neighborhood.get(i);
     }
 }
