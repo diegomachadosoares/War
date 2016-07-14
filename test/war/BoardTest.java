@@ -63,7 +63,7 @@ public class BoardTest {
         Map continentMap = this.board.getContinents();
         Continent cont;
         List<Territory> t;
-        for (int j = 0; j < continentMap.size() - 1; j++) {
+        for (int j = 0; j < continentMap.size(); j++) {
             cont = (Continent) continentMap.get(j);
             System.out.println("\nCONTINENTE: " + cont.getName() + "\n");
             testContinentTerritoryCreation(cont);
@@ -74,7 +74,7 @@ public class BoardTest {
     public void testContinentTerritoryCreation(Continent c) {
         List<Territory> t;
         t = c.getTerritories();
-        for (int j = 0; j < t.size() - 1; j++) {
+        for (int j = 0; j < t.size(); j++) {
             System.out.println(t.get(j).getName());
         }
     }
