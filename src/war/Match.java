@@ -37,12 +37,13 @@ public class Match {
     public void distributeTerritories() {
         //Distribuir territorios
         int territoriesCount = 0;
-        for (int i = 0; i < board.continents.size(); i++) {
-            for (int j = 0; j < board.continents.get(i).getTerritories().size(); j++) {
+        Map<Integer, Continent> continents = board.getContinents();
+        for (int i = 0; i < continents.size(); i++) {
+            for (int j = 0; j < continents.get(i).getTerritories().size(); j++) {
                 if (territoriesCount == players.size()) {
                     territoriesCount = territoriesCount % players.size();
                 }
-                Territory t = board.continents.get(i).getTerritories().get(j);
+                Territory t = continents.get(i).getTerritories().get(j);
                 Player p = players.get(territoriesCount);
 
                 t.setOwner(p);
@@ -50,7 +51,7 @@ public class Match {
                 t.setOwner(p);
 
                 players.set(territoriesCount, p);
-                board.continents.get(i).getTerritories().set(j, t);
+                continents.get(i).getTerritories().set(j, t);
 
                 territoriesCount++;
             }
