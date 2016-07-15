@@ -17,6 +17,7 @@ public class PlayerMaker extends javax.swing.JDialog {
      * Creates new form PlayerMaker
      */
     public PlayerMaker() {
+        setBounds(550, 300, 618, 330);
         meuInit();
         
     }
