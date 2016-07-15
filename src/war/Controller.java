@@ -23,6 +23,7 @@ public class Controller {
     private String contFile = "data/continent.txt";
     private String terrFile = "data/territories.txt";
     private String neighFile = "data/neighbors.txt";
+    private String objFile = "data/objectives.txt";
     private LinkedList<Player> players;
     private LinkedList<String> colors;
     private Match match;
@@ -103,7 +104,7 @@ public class Controller {
 
     public void startMatch(){
         match.setPlayers(this.players);
-        match.distributeObjectives();
+        match.distributeObjectives(objFile);
         match.distributeTerritories();
         match.startMatch();
 
