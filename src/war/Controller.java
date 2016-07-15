@@ -85,9 +85,9 @@ public class Controller {
     }
 
     public void createHumanPlayer(String name, String color) {
-        int i = this.players.indexOf(color);
+        int i = this.colors.indexOf(color);
         if (i >= 0){
-            this.players.remove(i);
+            this.colors.remove(i);
         }
         this.players.push(new Player(name, color, 0));
     }
@@ -95,7 +95,7 @@ public class Controller {
     public void createAIPlayers(int i) {
         String name, color;
         for (int j = 0; j < i; j++) {
-            name = "AI_" + String.valueOf(j+1);
+            name = "JOGADOR_" + String.valueOf(j+1);
             color = this.colors.pop();
             this.players.push(new Player(name, color, j+1));
         }

@@ -41,7 +41,9 @@ public class Game {
 
     private void runGameplay() throws FileNotFoundException, IOException {
         
-        //Mostrar mapa
+        PlayerMaker playerdialog = new PlayerMaker();
+        playerdialog.setVisible(true);
+        
         MapView tabuleiro = new MapView(window);
         tabuleiro.setBackground("data/gameplay/mapa-mundi.png");
         tabuleiro.run();

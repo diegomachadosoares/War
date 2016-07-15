@@ -20,7 +20,6 @@ import java.util.Scanner;
  * @author AleGomes
  */
 public class MapView {
-
     private Window window;
     private int indicePressed;
     private boolean pressed;
