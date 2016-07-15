@@ -34,7 +34,7 @@ public class Controller {
             this.players = new LinkedList<>();
             this.colors = new LinkedList<>();
             addColors();
-            this.match = new Match();
+            this.match = new Match(this.players, this.board);
         } catch (FileNotFoundException e) {
         } catch (IOException io) {
         }
