@@ -25,6 +25,7 @@ public class Controller {
     private String neighFile = "data/neighbors.txt";
     private LinkedList<Player> players;
     private LinkedList<String> colors;
+    private Match match;
 
     private Controller() {
         try {
@@ -32,6 +33,7 @@ public class Controller {
             this.players = new LinkedList<>();
             this.colors = new LinkedList<>();
             addColors();
+            this.match = new Match();
         } catch (FileNotFoundException e) {
         } catch (IOException io) {
         }
@@ -97,5 +99,13 @@ public class Controller {
             color = this.colors.pop();
             this.players.push(new Player(name, color, j+1));
         }
+    }
+
+    public void startMatch(){
+        match.setPlayers(this.players);
+        match.distributeObjectives();
+        match.distributeTerritories();
+        match.startMatch();
+
     }
 }
