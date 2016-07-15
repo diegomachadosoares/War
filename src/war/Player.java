@@ -10,7 +10,7 @@ public class Player {
 
     private final String name;
     private final String color;
-    private String objective;
+    private Objective objective;
     private final int id;
     private LinkedList<Territory> territories;
     private LinkedList<Continent> continents;
@@ -30,11 +30,11 @@ public class Player {
         return this.color;
     }
 
-    public String getObjective() {
+    public Objective getObjective() {
         return this.objective;
     }
 
-    public void setObjective(String objective) {
+    public void setObjective(Objective objective) {
         this.objective = objective;
     }
 
