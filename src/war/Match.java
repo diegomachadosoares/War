@@ -103,16 +103,23 @@ public class Match {
             while (sc.hasNextLine()) {
                 currline = sc.nextLine();
                 split = currline.split(":");
-                if (Integer.parseInt(split[0]) == 0 || Integer.parseInt(split[0]) == 1){
-                    List<Integer> list = new ArrayList<>();
-                    list.add(Integer.parseInt(split[1]));
-                    list.add(Integer.parseInt(split[2]));
-                    this.objectives.push(new Objective(Integer.parseInt(split[0]), split[4], list));
-                } else if (Integer.parseInt(split[0]) == 2){
-                    //FIXME -> Corrigir o caso do objetivo 18 territorios com 2 tropas cada
-                    this.objectives.push(new Objective(Integer.parseInt(split[0]), split[2], Integer.parseInt(split[1])));
-                } else if (Integer.parseInt(split[0]) == 3){
-                    this.objectives.push(new Objective(Integer.parseInt(split[0]), split[2], split[1]));
+                switch (Integer.parseInt(split[0])) {
+                    case 0:
+                    case 1:
+                        List<Integer> list = new ArrayList<>();
+                        list.add(Integer.parseInt(split[1]));
+                        list.add(Integer.parseInt(split[2]));
+                        this.objectives.push(new Objective(Integer.parseInt(split[0]), split[3], list));
+                        break;
+                    case 2:
+                        //FIXME -> Corrigir o caso do objetivo 18 territorios com 2 tropas cada
+                        this.objectives.push(new Objective(Integer.parseInt(split[0]), split[2], Integer.parseInt(split[1])));
+                        break;
+                    case 3:
+                        this.objectives.push(new Objective(Integer.parseInt(split[0]), split[2], split[1]));
+                        break;
+                    default:
+                        break;
                 }
             }
         } catch (FileNotFoundException e) {
