@@ -48,8 +48,9 @@ public class Match {
     }
 
     public void distributeObjectives() {
+        Objective obj = Objective.getInstance();
         for (int i = 0; i < players.size(); i++) {
-            players.get(i).chooseObjective();
+            
         }
     }
 
@@ -59,7 +60,7 @@ public class Match {
         //Inicializacao
         //Rodada de fortificação
         for (int i = 0; i < players.size(); i++) {
-            
+
         }
 
         while (!acabou) {
@@ -79,5 +80,9 @@ public class Match {
             return numberOfTroops;
         }
         return 0;
-    }   
+    }
+
+    public void setPlayers(List<Player> players){
+         this.players = players;
+    }
 }
