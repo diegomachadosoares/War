@@ -13,6 +13,7 @@ public class Player {
     private String objective;
     private final int id;
     private LinkedList<Territory> territories;
+    private LinkedList<Continent> continents;
     private LinkedList<Card> cards;
    
     public Player(String name, String color, int id) {
@@ -33,9 +34,8 @@ public class Player {
         return this.objective;
     }
 
-    public void chooseObjective() {
-        Objective obj = Objective.getInstance();
-        this.objective = obj.getObjective();
+    public void setObjective(String objective) {
+        this.objective = objective;
     }
 
     public boolean distributeTroops(Territory t, int n){
@@ -58,18 +58,31 @@ public class Player {
     public LinkedList<Territory> getTerritories() {
         return territories;
     }
-
-    /**
-     * @param territories the territories to set
-     */
-    public void setTerritories(LinkedList<Territory> territories) {
-        this.territories = territories;
-    }
     
     public void addTerritory(Territory territory){
         if(this.territories == null){
             this.territories = new LinkedList<>();
         }
         this.territories.add(territory);
+    }
+    
+    public boolean removeTerritory(Territory t){
+        if (this.territories.contains(t)){
+            this.territories.remove(t);
+            return true;
+        }
+        return false;
+    }
+    
+    public void addContinent(Continent c){
+        this.continents.push(c);
+    }
+    
+    public boolean removeContinent(Continent c){
+        if (this.continents.contains(c)){
+            this.continents.remove(c);
+            return true;
+        }
+        return false;
     }
 }
