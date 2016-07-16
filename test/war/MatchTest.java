@@ -114,7 +114,7 @@ public class MatchTest {
 
         Match match = new Match(players, board);
 
-        match.distributeObjectives();
+        match.distributeObjectives("data/objectives.txt");
 
         for (Player p : match.players) {
             if (p.getObjective() == null) {
@@ -122,39 +122,5 @@ public class MatchTest {
             }
         }
         assertEquals(true, true);
-    }
-
-    @Test
-    public void testDistributeTerritories() throws IOException {
-        Player p1 = new Player("p1", "Blue", 0);
-        Player p2 = new Player("p2", "Blue", 1);
-        Player p3 = new Player("p3", "Blue", 2);
-
-        List<Player> players = new ArrayList<>();
-        players.add(p1);
-        players.add(p2);
-        players.add(p3);
-
-        Board board = new Board("continents.txt", "territories.txt", "neighbor.txt");
-
-        Match match = new Match(players, board);
-        
-        match.distributeTerritories();
-        
-        for(Player p : match.players){
-            if(p.getTerritories() == null){
-                fail("No territories for player "+p.getName());
-            }
-        }
-//        
-//        for(Continent c : match.board.continents){
-//            for(Territory t : c.getTerritories()){
-//                if(t.getOwner() == null){
-//                    fail("Territory "+t.getName()+" doenst have owner.");
-//                }
-//            }
-//        }
-//        
-//        assertEquals(true, true);
     }
 }
