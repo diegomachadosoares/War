@@ -25,6 +25,7 @@ public class MapView {
     private boolean pressed;
     private GameImage background;
     private GameImage hud;
+    private Hud_Dialog menu_lateral = new Hud_Dialog();
     private GameImage shadow;
 
     List<Button> buttons = new ArrayList<Button>(); // Lista de botões
@@ -52,7 +53,7 @@ public class MapView {
             System.out.println(ex.toString());
         }
 
-       
+       menu_lateral.setVisible(true);
         
     }
 
@@ -72,7 +73,7 @@ public class MapView {
             if(buttonPressed() != -1){
             
             pressed=true;
-            Janela_Pais frame = new Janela_Pais(this);
+            Pais_Dialog frame = new Pais_Dialog(this);
             frame.setVisible(true);
             }
             
@@ -103,7 +104,6 @@ public class MapView {
     public void draw() {
         this.background.draw();
         this.hud.draw();
-        
         for( int i = 0; i < buttons.size() ; i++){
           buttons.get(i).draw();
         }

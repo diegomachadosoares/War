@@ -15,12 +15,12 @@ import javax.swing.JFrame;
  *
  * @author msndo
  */
-public class Janela_Pais extends JDialog implements ActionListener {
+public class Pais_Dialog extends JDialog implements ActionListener {
 
         private MapView map;
         private Controller controller;
         
-    public Janela_Pais(MapView map) {
+    public Pais_Dialog(MapView map) {
         controller = Controller.getInstance();
         this.map=map;
 	setBounds(550, 300, 618, 330);
@@ -58,8 +58,7 @@ public class Janela_Pais extends JDialog implements ActionListener {
         //---- Atribui nome do DONO do territorio e PINTA O NOME
         nomeJogadorLabel = new javax.swing.JLabel();
         nomeJogadorLabel.setText(controller.getTerritory(map.getIndice()).getOwner().getName());
-        
-        String cor = controller.getTerritory(map.getIndice()).getOwner().getColor();        
+                String cor = controller.getTerritory(map.getIndice()).getOwner().getColor();        
 
         switch(cor){
             case "Amarelo":

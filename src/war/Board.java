@@ -19,6 +19,7 @@ public class Board {
     private final Map<Integer, Continent> continents;
     private final Map<Integer, Territory> territories;
     private final Map<Integer, List<Territory>> neighborhood;
+   
 
     public Board(String continentsFile, String territoriesFile, String neighborhoodFile) throws FileNotFoundException, IOException {
         this.continents = new HashMap<>();
@@ -96,7 +97,11 @@ public class Board {
 
                 territoriesCount++;
             }
-        
+            for (int i = 0; i < controller.getPlayerById(0).getTerritories().size(); i++) {
+            
+                System.out.println(controller.getPlayerById(0).getTerritories().get(i).getName());
+        }
+
 
     }
     
