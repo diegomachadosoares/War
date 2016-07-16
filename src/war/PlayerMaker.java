@@ -230,6 +230,7 @@ public class PlayerMaker extends javax.swing.JDialog {
         String nome = nomeTextField.getText();
         String cor = (String) corComboBox.getSelectedItem();
         controller.createHumanPlayer(nome,cor);
+        controller.createAIPlayers(5);
         controller.startMatch();
         this.dispose();
         }

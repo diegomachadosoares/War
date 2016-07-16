@@ -32,29 +32,12 @@ public class Match {
     }
 
     public void distributeTerritories() {
-        //Distribuir territorios
-        int territoriesCount = 0;
-        Map<Integer, Continent> continents = board.getContinents();
-        for (int i = 0; i < continents.size(); i++) {
-            for (int j = 0; j < continents.get(i).getTerritories().size(); j++) {
-                if (territoriesCount == players.size()) {
-                    territoriesCount = territoriesCount % players.size();
-                }
-                Territory t = continents.get(i).getTerritories().get(j);
-                Player p = players.get(territoriesCount);
+        
+        board.distributeTerritories(players);
+            
+   }
 
-                t.setOwner(p);
-                p.addTerritory(t);
-                t.setOwner(p);
-
-                players.set(territoriesCount, p);
-                continents.get(i).getTerritories().set(j, t);
-
-                territoriesCount++;
-            }
-        }
-    }
-
+    
     public void distributeObjectives(String objectiveFile) {
         initializeObjectives(objectiveFile);
         for (int i = 0; i < players.size(); i++) {

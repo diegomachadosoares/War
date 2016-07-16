@@ -79,7 +79,27 @@ public class Board {
         }
     }
     
+    public void distributeTerritories(List<Player> players) {
+        Controller controller = Controller.getInstance();
+        int territoriesCount = 0;
 
+            for (int j = 0; j < territories.size(); j++) {
+                if (territoriesCount == players.size()) {
+                    territoriesCount = territoriesCount % players.size();
+                }
+                Territory t = territories.get(j);
+                Player p = controller.getPlayerById(territoriesCount);                
+                t.setOwner(p);
+                controller.getPlayerById(territoriesCount).addTerritory(t);
+
+                territories.put(j, t);
+
+                territoriesCount++;
+            }
+        
+
+    }
+    
     public Map getTerritories() {
         return this.territories;
     }
