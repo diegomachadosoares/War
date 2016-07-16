@@ -18,10 +18,10 @@ public class FramePrincipal extends javax.swing.JFrame {
      * Creates new form FramePrincipal
      */
     public FramePrincipal() {
-        setBounds(800,600, 618, 330);
+        setBounds(800,800, 618, 330);
 	setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         initComponents();
-        int width = 800;
+        int width = 1000;
         int height = 600;
 
         Game game = new Game(width, height);

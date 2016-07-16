@@ -5,6 +5,7 @@
  */
 package war;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JDialog;
@@ -51,8 +52,42 @@ public class Janela_Pais extends JDialog implements ActionListener {
         tropasLabel = new javax.swing.JLabel();
         paisLabel = new javax.swing.JLabel();
         paisLabel.setText(controller.getTerritory(map.getIndice()).getName());
+        paisLabel.setForeground(new java.awt.Color(255, 0, 0));
+        paisLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        
+        //---- Atribui nome do DONO do territorio e PINTA O NOME
         nomeJogadorLabel = new javax.swing.JLabel();
         nomeJogadorLabel.setText(controller.getTerritory(map.getIndice()).getOwner().getName());
+        
+        String cor = controller.getTerritory(map.getIndice()).getOwner().getColor();        
+
+        switch(cor){
+            case "Amarelo":
+                nomeJogadorLabel.setForeground(Color.YELLOW);
+                break;
+            case "Azul":
+                nomeJogadorLabel.setForeground(Color.BLUE);
+                break;
+            case "Roxo":
+                nomeJogadorLabel.setForeground(new java.awt.Color(198,5,246));
+                break;
+            case "Preto":
+                nomeJogadorLabel.setForeground(Color.BLACK);
+                break;
+            case "Verde":
+                nomeJogadorLabel.setForeground(Color.GREEN);
+                break;
+            case "Vermelho":
+                nomeJogadorLabel.setForeground(Color.RED);
+                break;
+            default:
+                System.out.println("Cor Invalida!");
+                
+                
+        }
+
+        
+        //----
         
         numeroTropasLabel = new javax.swing.JLabel();
         numeroTropasLabel.setText(Integer.toString(controller.getTerritory(map.getIndice()).getTroops()));
@@ -150,6 +185,9 @@ public class Janela_Pais extends JDialog implements ActionListener {
 
         tropasLabel.setText("Nº de Tropas:");
 
+        paisLabel.setForeground(new java.awt.Color(255, 0, 0));
+        paisLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -171,14 +209,14 @@ public class Janela_Pais extends JDialog implements ActionListener {
                                 .addComponent(atacarButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(moverButton)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 9, Short.MAX_VALUE)))
                 .addContainerGap())
             .addComponent(paisLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(paisLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
+                .addComponent(paisLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jogadorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)

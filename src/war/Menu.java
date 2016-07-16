@@ -12,6 +12,7 @@ public class Menu {
     private Window window;
 
     private GameImage background;
+    private GameImage hud;
     List<Button> buttons = new ArrayList<Button>(); // Lista de botões
 
     private Keyboard keyboard;
@@ -40,8 +41,10 @@ public class Menu {
 
     public void setBackground(String img) { // Muda o fundo do menu
         background = new GameImage(img);
+        
     }
 
+    
     private void loop() { // Loop lógico do menu
         while (opc < 0) {
             if (mouse.isLeftButtonPressed()) { // Verifica se o botão esquerdo do mouse foi pressionado
@@ -63,6 +66,7 @@ public class Menu {
 
     private void draw() { // Desenha o menu
         this.background.draw();
+
 
         for (Button button : buttons) {
             // Desenha cada botão da lista

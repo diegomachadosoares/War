@@ -24,6 +24,7 @@ public class MapView {
     private int indicePressed;
     private boolean pressed;
     private GameImage background;
+    private GameImage hud;
     private GameImage shadow;
 
     List<Button> buttons = new ArrayList<Button>(); // Lista de botões
@@ -57,6 +58,11 @@ public class MapView {
 
     public void setBackground(String img) { // Muda o fundo do menu
         background = new GameImage(img);
+    }
+    
+        public void setHud(String img, int x, int y) { // Muda o fundo do hud
+        hud = new GameImage(img);
+        hud.setPosition(x, y);
     }
 
     public void run() {
@@ -95,7 +101,9 @@ public class MapView {
     }
     
     public void draw() {
-        this.background.draw();  
+        this.background.draw();
+        this.hud.draw();
+        
         for( int i = 0; i < buttons.size() ; i++){
           buttons.get(i).draw();
         }

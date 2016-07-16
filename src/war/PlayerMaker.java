@@ -33,7 +33,7 @@ public class PlayerMaker extends javax.swing.JDialog {
         nomeMensagem = new javax.swing.JLabel();
         corMensagem = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         nomeLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         nomeLabel.setText("Escolha seu nome :");

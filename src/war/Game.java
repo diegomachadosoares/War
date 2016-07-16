@@ -46,6 +46,7 @@ public class Game {
         
         MapView tabuleiro = new MapView(window);
         tabuleiro.setBackground("data/gameplay/mapa-mundi.png");
+        tabuleiro.setHud("data/gameplay/hud.png", 800, 0);
         tabuleiro.run();
     }
 
