@@ -13,12 +13,6 @@ import java.util.Map;
 public class Controller {
 
     private static Controller INSTANCE;
-
-    private static void initializeInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new Controller();
-        }
-    }
     private Board board;
     private String contFile = "data/continent.txt";
     private String terrFile = "data/territories.txt";
@@ -27,16 +21,33 @@ public class Controller {
     private LinkedList<Player> players;
     private LinkedList<String> colors;
     private Match match;
+    private boolean gameStarted;
+    private int state;  // state = 0 => Fortify territories
+    // state - 1 => Battle
+    // state = 2 => moving troops
 
     private Controller() {
         try {
             this.board = new Board(contFile, terrFile, neighFile);
             this.players = new LinkedList<>();
             this.colors = new LinkedList<>();
-            addColors();
+            this.addColors();
             this.match = new Match(this.players, this.board);
+            this.state = 0;
+            this.gameStarted = false;
         } catch (FileNotFoundException e) {
         } catch (IOException io) {
+        }
+    }
+
+    private static class ControllerHolder {
+
+        private static final Controller INSTANCE = new Controller();
+    }
+
+    private static void initializeInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new Controller();
         }
     }
 
@@ -56,17 +67,6 @@ public class Controller {
         this.colors.push("Vermelho");
     }
 
-    private void fortify(Player p) {
-        while(p.getNTroops() != 0){
-            
-        }
-    }
-
-    private static class ControllerHolder {
-
-        private static final Controller INSTANCE = new Controller();
-    }
-
     public Map getTerritories() {
         return board.getTerritories();
     }
@@ -79,14 +79,14 @@ public class Controller {
         return board.getNeighborhoods();
     }
 
-    public Player getPlayerById (Integer i){
-    return players.get(i);
+    public Player getPlayerById(Integer i) {
+        return players.get(i);
     }
-    
-    public void setPlayerById (Integer i , Player p){
-    players.set(i, p);
+
+    public void setPlayerById(Integer i, Player p) {
+        players.set(i, p);
     }
-    
+
     public Territory getTerritory(Integer i) {
         return board.getTerritory(i);
     }
@@ -99,9 +99,25 @@ public class Controller {
         return board.getNeighborhood(i);
     }
 
+    public void setGameStarted() {
+        this.gameStarted = true;
+    }
+
+    public boolean getGameStarted() {
+        return this.gameStarted;
+    }
+
+    public int getPlayerTroops(Player p) {
+        return this.players.get(p.getId()).getNTroops();
+    }
+
+    public int getState() {
+        return this.state;
+    }
+
     public void createHumanPlayer(String name, String color) {
         int i = this.colors.indexOf(color);
-        if (i >= 0){
+        if (i >= 0) {
             this.colors.remove(i);
         }
         this.players.push(new Player(name, color, 0));
@@ -112,34 +128,47 @@ public class Controller {
         for (int j = 0; j < i; j++) {
             color = this.colors.pop();
             name = color;
-            this.players.push(new Player(name, color, j+1));
+            this.players.push(new Player(name, color, j + 1));
         }
     }
 
-    public void startMatch(){
+    public void startMatch() {
         match.setPlayers(this.players);
         match.distributeObjectives(objFile);
         match.distributeTerritories();
-        
+
         boolean acabou = true;
 
         //Inicializacao
         //Rodada de fortificação
         for (int i = 0; i < players.size(); i++) {
-            
+
         }
 
         while (!acabou) {
             for (int i = 0; i < players.size(); i++) {
                 //Distribui peças
-                fortify(this.players.get(i));
                 //Ataca / Combate
                 //Movimenta tropas
             }
         }
     }
-    
-    public int getPlayerTroops(Player p){
-        return this.players.get(p.getId()).getNTroops();
+
+    public int changeState() {
+        if (this.state == 2) {
+            this.state = 0;
+        }
+        this.state++;
+        return this.state;
+    }
+
+    public void distributeIATroops(Player p) {
+        int ntroops = p.getNTroops();
+        LinkedList<Territory> t = p.getTerritories();
+        for (int i = 0; i < ntroops; i++) {
+            for (int j = 0; j < t.size(); j++) {
+                t.get((int) (1 - Math.random() * t.size())).addTroops(1);
+            }
+        }
     }
 }
