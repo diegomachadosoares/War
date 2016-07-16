@@ -40,13 +40,13 @@ public class ContinentTest {
     public void tearDown() {
     }
 
-//    @Test
-//    public void testEquals() {
-//        System.out.println("equals");
-//        
-//        Continent c1 = new Continent("c1", new ArrayList<>());
-//        Continent c2 = new Continent("c1", new ArrayList<>());
-//        
-//        assertEquals(c1, c2);
-//    }
+    @Test
+    public void testEquals() {
+        System.out.println("equals");
+        
+        Continent c1 = new Continent("c1", 1,new ArrayList<>());
+        Continent c2 = new Continent("c1", 1,new ArrayList<>());
+        
+        assertEquals(c1, c2);
+    }
 }
