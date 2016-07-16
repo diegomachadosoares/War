@@ -33,12 +33,14 @@ public class MapView {
 
     private Keyboard keyboard;
     private Mouse mouse;
+    private boolean backgroundDrawn;
 
     public MapView(Window window) {
         this.window = window;
         this.shadow = new GameImage("data/gameplay/shadow.png");
         this.keyboard = window.getKeyboard();
         this.mouse = window.getMouse();
+        backgroundDrawn = false;
         
         try {
             File file = new File("data/pais_button.ini");
@@ -106,7 +108,10 @@ public class MapView {
     }
     
     public void draw() {
-        this.background.draw();
+        if(!backgroundDrawn){
+            this.background.draw();
+            backgroundDrawn=true;
+        }
         this.hud.draw();
         for( int i = 0; i < buttons.size() ; i++){
           buttons.get(i).draw();
