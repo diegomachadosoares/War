@@ -183,4 +183,8 @@ public class Controller {
 
         }
     }
+    
+    public List getPlayers(){
+        return this.players;
+    }
 }
