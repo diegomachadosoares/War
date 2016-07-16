@@ -26,7 +26,7 @@ public class MapView {
     private boolean pressed;
     private GameImage background;
     private GameImage hud;
-    private Hud_Dialog menu_lateral = new Hud_Dialog();
+    //private Hud_Dialog menu_lateral = new Hud_Dialog();
     private GameImage shadow;
 
     List<Button> buttons = new ArrayList<Button>(); // Lista de botões
@@ -56,7 +56,7 @@ public class MapView {
             System.out.println(ex.toString());
         }
 
-        menu_lateral.setVisible(true);
+        //menu_lateral.setVisible(true);
         
     }
 
@@ -145,11 +145,11 @@ public class MapView {
             int max = reader.nextInt();
             for (int i = 0; i < max; i++) {
                 reader.next();
-                int posX = reader.nextInt(); 
-                int posY = reader.nextInt();
                 Territory territory = controller.getTerritory(i);
                 Player player = territory.getOwner();
                 String quantidade = Integer.toString(territory.getTroops());
+                int posX = reader.nextInt()+buttons.get(i).getSprite().width/2; 
+                int posY = (int)(reader.nextInt()+buttons.get(i).getSprite().height*1.5);
                 
                 switch(player.getColor()){
                     case "Amarelo":
