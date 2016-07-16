@@ -15,6 +15,7 @@ public class Player {
     private LinkedList<Territory> territories;
     private LinkedList<Continent> continents;
     private LinkedList<Card> cards;
+    private int nTroops;
    
     public Player(String name, String color, int id) {
         this.name = name;
@@ -84,5 +85,13 @@ public class Player {
             return true;
         }
         return false;
+    }
+    
+    public void setNTroops(int n){
+        this.nTroops = n;
+    }
+    
+    public int getNTroops(){
+        return this.nTroops;
     }
 }
