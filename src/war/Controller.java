@@ -73,11 +73,11 @@ public class Controller {
         return board.getNeighborhoods();
     }
 
-    public Player getPlayerById ( Integer i){
+    public Player getPlayerById (Integer i){
     return players.get(i);
     }
     
-    public void setPlayerById ( Integer i , Player p){
+    public void setPlayerById (Integer i , Player p){
     players.set(i, p);
     }
     
@@ -104,8 +104,8 @@ public class Controller {
     public void createAIPlayers(int i) {
         String name, color;
         for (int j = 0; j < i; j++) {
-            name = "JOGADOR" + String.valueOf(j+1);
             color = this.colors.pop();
+            name = color;
             this.players.push(new Player(name, color, j+1));
         }
     }
