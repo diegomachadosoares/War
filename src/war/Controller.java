@@ -56,6 +56,12 @@ public class Controller {
         this.colors.push("Vermelho");
     }
 
+    private void fortify(Player p) {
+        while(p.getNTroops() != 0){
+            
+        }
+    }
+
     private static class ControllerHolder {
 
         private static final Controller INSTANCE = new Controller();
@@ -114,7 +120,26 @@ public class Controller {
         match.setPlayers(this.players);
         match.distributeObjectives(objFile);
         match.distributeTerritories();
-        match.startMatch();
+        
+        boolean acabou = true;
 
+        //Inicializacao
+        //Rodada de fortificação
+        for (int i = 0; i < players.size(); i++) {
+            
+        }
+
+        while (!acabou) {
+            for (int i = 0; i < players.size(); i++) {
+                //Distribui peças
+                fortify(this.players.get(i));
+                //Ataca / Combate
+                //Movimenta tropas
+            }
+        }
+    }
+    
+    public int getPlayerTroops(Player p){
+        return this.players.get(p.getId()).getNTroops();
     }
 }
