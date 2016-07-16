@@ -136,21 +136,20 @@ public class Controller {
         match.setPlayers(this.players);
         match.distributeObjectives(objFile);
         match.distributeTerritories();
-
-        boolean acabou = true;
-
-        //Inicializacao
-        //Rodada de fortificação
-        for (int i = 0; i < players.size(); i++) {
-
+        this.gainTroops();
+        // First round - Fotification only
+        for (int i = 1; i < players.size(); i++) {
+            Player p = this.players.get(i);
+            distributeIATroops(p);
         }
+    }
 
-        while (!acabou) {
-            for (int i = 0; i < players.size(); i++) {
-                //Distribui peças
-                //Ataca / Combate
-                //Movimenta tropas
-            }
+    public void startIARound() {
+        for (int i = 1; i < players.size(); i++) {
+            Player p = this.players.get(i);
+            distributeIATroops(p);
+            attackIA(p);
+            moveIATroops(p);
         }
     }
 
@@ -166,9 +165,22 @@ public class Controller {
         int ntroops = p.getNTroops();
         LinkedList<Territory> t = p.getTerritories();
         for (int i = 0; i < ntroops; i++) {
-            for (int j = 0; j < t.size(); j++) {
-                t.get((int) (1 - Math.random() * t.size())).addTroops(1);
-            }
+            t.get((int) (1 + Math.random() * (t.size() - 1))).addTroops(1);
+        }
+    }
+
+    public void attackIA(Player p) {
+
+    }
+
+    public void moveIATroops(Player p) {
+    }
+
+    public void gainTroops() {
+        for (int i = 0; i < this.players.size(); i++) {
+            int nterr = this.players.get(i).getTerritories().size();
+            this.players.get(i).setNTroops(nterr / 2);
+
         }
     }
 }
