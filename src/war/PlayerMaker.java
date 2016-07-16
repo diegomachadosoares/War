@@ -233,6 +233,7 @@ public class PlayerMaker extends javax.swing.JDialog {
         controller.createAIPlayers(5);
         controller.startMatch();
         this.dispose();
+        controller.setGameStarted();
         }
     }//GEN-LAST:event_StartButtonActionPerformed
 
