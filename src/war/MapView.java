@@ -126,4 +126,11 @@ public class MapView {
     public int getIndice(){
     return indicePressed;
     }
+    
+    public void escreveNumeros(){
+        Controller controller = Controller.getInstance();
+        for (int i=0; i<42; i++){
+            
+        }
+    }
 }
