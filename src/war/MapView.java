@@ -9,6 +9,7 @@ import JPlay.GameImage;
 import JPlay.Keyboard;
 import JPlay.Mouse;
 import JPlay.Window;
+import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class MapView {
     private boolean pressed;
     private GameImage background;
     private GameImage hud;
-    // private Hud_Dialog menu_lateral = new Hud_Dialog();
+    private Hud_Dialog menu_lateral = new Hud_Dialog();
     private GameImage shadow;
 
     List<Button> buttons = new ArrayList<Button>(); // Lista de botões
@@ -53,7 +54,7 @@ public class MapView {
             System.out.println(ex.toString());
         }
 
-       // menu_lateral.setVisible(true);
+        menu_lateral.setVisible(true);
         
     }
 
@@ -69,6 +70,8 @@ public class MapView {
     public void run() {
         while (true) {
             this.draw();
+            if(Controller.getInstance().getGameStarted())
+                escreveNumeros();
             
             if(buttonPressed() != -1){
             
@@ -81,6 +84,7 @@ public class MapView {
                 this.window.exit();
                 
             }
+            
         }
     }
 
@@ -129,8 +133,46 @@ public class MapView {
     
     public void escreveNumeros(){
         Controller controller = Controller.getInstance();
-        for (int i=0; i<42; i++){
+        try {
+            File file = new File("data/pais_button.ini");
+            Scanner reader = new Scanner(file);
+
+            int max = reader.nextInt();
+            for (int i = 0; i < max; i++) {
+                reader.next();
+                int posX = reader.nextInt(); 
+                int posY = reader.nextInt();
+                Territory territory = controller.getTerritory(i);
+                Player player = territory.getOwner();
+                String quantidade = Integer.toString(territory.getTroops());
+                
+                switch(player.getColor()){
+                    case "Amarelo":
+                        window.drawText(quantidade, posX, posY, Color.YELLOW);
+                        break;
+                    case "Azul":
+                        window.drawText(quantidade, posX, posY, Color.BLUE);
+                        break;
+                    case "Roxo":
+                        window.drawText(quantidade, posX, posY, new java.awt.Color(198,5,246));
+                        break;
+                    case "Preto":
+                        window.drawText(quantidade, posX, posY, Color.BLACK);
+                        break;
+                    case "Verde":
+                        window.drawText(quantidade, posX, posY, Color.GREEN);
+                        break;
+                    case "Vermelho":
+                        window.drawText(quantidade, posX, posY, Color.RED);
+                        break;
+                    default:
+                }
+                
+
+            }
             
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex.toString());
         }
     }
 }
