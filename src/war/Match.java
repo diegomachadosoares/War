@@ -6,7 +6,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -32,9 +31,7 @@ public class Match {
     }
 
     public void distributeTerritories() {
-        
         board.distributeTerritories(players);
-            
    }
 
     
@@ -43,24 +40,6 @@ public class Match {
         for (int i = 0; i < players.size(); i++) {
             //FIXME -> Make me random!
             this.players.get(i).setObjective(this.objectives.get(i));
-        }
-    }
-
-    public void startMatch() {
-        boolean acabou = true;
-
-        //Inicializacao
-        //Rodada de fortificação
-        for (int i = 0; i < players.size(); i++) {
-
-        }
-
-        while (!acabou) {
-            for (int i = 0; i < players.size(); i++) {
-                //Distribui peças
-                //Ataca / Combate
-                //Movimenta tropas
-            }
         }
     }
 
