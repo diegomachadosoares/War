@@ -8,17 +8,18 @@ import static org.junit.Assert.*;
  * @author diegomachado
  */
 public class PlayerTest {
+
     private final int numPlayers;
     private final Player[] players;
-    
+
     public PlayerTest() {
         this.numPlayers = 6;
         this.players = new Player[numPlayers];
         for (Integer i = 0; i < this.numPlayers; i++) {
-           this. players[i] = new Player("P"+i.toString(), "A"+i.toString(), i);
-        }  
+            this.players[i] = new Player("P" + i, "A" + i, i);
+        }
     }
-    
+
     /**
      * Test of getName method, of class Player.
      */
@@ -27,11 +28,11 @@ public class PlayerTest {
         System.out.println("getName");
         for (Integer i = 0; i < this.numPlayers; i++) {
             Player instance = players[i];
-            String expResult = "P"+i.toString();
+            String expResult = "P" + i;
             String result = instance.getName();
             assertEquals(expResult, result);
         }
-        fail("Fail to get name player name");
+        //fail("Fail to get name player name");
     }
 
     /**
@@ -48,30 +49,24 @@ public class PlayerTest {
         fail("The test case is a prototype.");
     }
 
-
-    /**
-     * Test of chooseObjective method, of class Player.
-     */
-    //@Test
-    public void testChooseObjective() {
-        System.out.println("chooseObjective");
-        Player instance = null;
-        instance.chooseObjective();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
     /**
      * Test of distributeTroops method, of class Player.
      */
-    //@Test
+    @Test
     public void testDistributeTroops() {
         System.out.println("distributeTroops");
-        Territory t = null;
-        int n = 0;
-        Player instance = null;
-        instance.distributeTroops(t, n);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }    
+        Player owner = new Player("P1", "Azul", 1);
+        Territory t1 = new Territory("Brazil", owner, 1);
+        owner.addTerritory(t1);
+        
+        Player notOwner = new Player("P2", "Preto", 2);
+        Territory t2 = new Territory("Alaska", notOwner, 2);
+        notOwner.addTerritory(t2);
+        
+        //notOwner tentando distribuir tropas no territorio de owner vai dar false
+        boolean result = notOwner.distributeTroops(t1, 5); 
+        
+        assertEquals(false, result);
+    }
+
 }
