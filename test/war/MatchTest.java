@@ -123,4 +123,25 @@ public class MatchTest {
         }
         assertEquals(true, true);
     }
+    
+    @Test
+    
+    public void testSetPlayers() throws IOException{
+        Player p1 = new Player("p1", "Blue", 0);
+        Player p2 = new Player("p2", "Blue", 1);
+        Player p3 = new Player("p3", "Blue", 2);
+
+        List<Player> players = new ArrayList<>();
+        players.add(p1);
+        players.add(p2);
+        players.add(p3);
+
+        Board board = new Board("continents.txt", "territories.txt", "neighbor.txt");
+
+        Match match = new Match(players, board);
+        
+        match.setPlayers(players);
+        
+        assertEquals(players, match.getPlayers());
+    }
 }
