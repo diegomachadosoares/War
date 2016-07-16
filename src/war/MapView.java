@@ -128,9 +128,9 @@ public class MapView {
 
         }
         
-        for(int i=0; i<42; i++){
+        /*for(int i=0; i<42; i++){
             soldier[i].draw();
-        }
+        }*/
        
            
    
@@ -159,32 +159,39 @@ public class MapView {
                 String quantidade = Integer.toString(territory.getTroops());
                 int posX = reader.nextInt()+buttons.get(i).getSprite().width/2; 
                 int posY = (int)(reader.nextInt()+buttons.get(i).getSprite().height*1.5);
-                soldier[i].setPosition(posX-soldier[i].width, posY-buttons.get(i).getSprite().height*0.5);
+                //soldier[i].setPosition(posX-soldier[i].width, posY-buttons.get(i).getSprite().height*0.5);
+                soldier[i].setPosition(posX-soldier[i].width/4, posY-buttons.get(i).getSprite().height*0.5);
                 
                 switch(player.getColor()){
                     case "Amarelo":
-                        window.drawText(quantidade, posX, posY, Color.BLACK);
                         soldier[i].setCurrFrame(5);
+                        soldier[i].draw();
+                        window.drawText(quantidade, posX, posY+soldier[i].height/3, Color.BLACK);
                         break;
                     case "Azul":
-                        window.drawText(quantidade, posX, posY, Color.BLACK);
                         soldier[i].setCurrFrame(1);
+                        soldier[i].draw();
+                        window.drawText(quantidade, posX, posY+soldier[i].height/3, Color.BLACK);
                         break;
                     case "Roxo":
-                        window.drawText(quantidade, posX, posY, Color.BLACK);
                         soldier[i].setCurrFrame(3);
+                        soldier[i].draw();
+                        window.drawText(quantidade, posX, posY+soldier[i].height/3, Color.BLACK);
                         break;
                     case "Preto":
-                        window.drawText(quantidade, posX, posY, Color.BLACK);
                         soldier[i].setCurrFrame(0);
+                        soldier[i].draw();
+                        window.drawText(quantidade, posX, posY+soldier[i].height/3, Color.BLACK);
                         break;
                     case "Verde":
-                        window.drawText(quantidade, posX, posY, Color.BLACK);
                         soldier[i].setCurrFrame(2);
+                        soldier[i].draw();
+                        window.drawText(quantidade, posX, posY+soldier[i].height/3, Color.BLACK);
                         break;
                     case "Vermelho":
-                        window.drawText(quantidade, posX, posY, Color.BLACK);
                         soldier[i].setCurrFrame(4);
+                        soldier[i].draw();
+                        window.drawText(quantidade, posX, posY+soldier[i].height/3, Color.BLACK);
                         break;
                     default:
                 }
