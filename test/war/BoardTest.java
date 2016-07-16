@@ -1,10 +1,13 @@
 package war;
 
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -77,5 +80,21 @@ public class BoardTest {
         for (int j = 0; j < t.size(); j++) {
             System.out.println(t.get(j).getName());
         }
+    }
+    
+    @Test
+    public void testTerritoriesDistribution(){
+        List<Player> players = new LinkedList<>();
+        players.add(new Player("AAA","Azul",0));
+        players.add(new Player("BBB","Preto",1));
+        players.add(new Player("CCC","Vermelho",2));
+        this.board.distributeTerritories(players);
+        
+        for(Object t : this.board.getTerritories().values()){
+            Territory tt = (Territory) t;
+            if (tt.getOwner() == null)
+                fail("Territory without owner.");
+        }
+        assertEquals(true, true);
     }
 }
