@@ -353,7 +353,12 @@ public class Distribuir_Dialog extends JDialog implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Object obj = e.getSource();
         if ( obj == distribuiButton ) {
-        System.out.println("FUNCIONOU ?");
+        Boolean deuErro = validaCampo();
+        if (!deuErro){
+            int tropas =  Integer.parseInt(qtdTextField.getText());
+            controller.addTroops(map.getIndice(),tropas) );
+
+        }
         
         }
         
