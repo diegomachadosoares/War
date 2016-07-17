@@ -34,6 +34,7 @@ public class MapView {
     //private Hud_Dialog menu_lateral = new Hud_Dialog();
     private GameImage shadow;
     private Sprite[] soldier;
+    private boolean mostraObjetivo;
 
     List<Button> buttons = new ArrayList<Button>(); // Lista de botões
 
@@ -49,6 +50,8 @@ public class MapView {
         this.mouse = window.getMouse();
         backgroundDrawn = false;
         soldier = new Sprite[42];
+        Objetivo=null;
+        mostraObjetivo=false;
 
         
         try {
@@ -124,7 +127,58 @@ public class MapView {
     public void callRound(){
         
         if(indicePressed==42){
-            System.out.println(controller.getPlayerById(0));
+            if(Objetivo==null){
+                switch(controller.getPlayerById(0).getObjective().getMSG()){
+                    case "Conquistar na totalidade a ASIA e a ÁFRICA.":
+                        Objetivo= new GameImage("data/gameplay/objectives0;4;3.png");
+                        break;
+                    case "Conquistar na totalidade a ASIA e a AMÉRICA DO SUL.":
+                        Objetivo= new GameImage("data/gameplay/objectives0;4;1.png");
+                        break;
+                    case "Conquistar na totalidade a AMÉRICA DO NORTE e a ÁFRICA.":
+                        Objetivo= new GameImage("data/gameplay/objectives0;0;3.png");
+                        break;
+                    case "Conquistar na totalidade a AMÉRICA DO NORTE e a AUSTRÁLIA.":
+                        Objetivo= new GameImage("data/gameplay/objectives0;0;5.png");
+                        break;
+                    case "Conquistar na totalidade a EUROPA, a AMÉRICA DO SUL e mais um terceiro.":
+                        Objetivo= new GameImage("data/gameplay/objectives1;2;1.png");
+                        break;
+                    case "Conquistar na totalidade a EUROPA, a AUSTRÁLIA e mais um terceiro.":
+                        Objetivo= new GameImage("data/gameplay/objectives1;2;5.png");
+                        break;
+                    case "Conquistar 18 TERRITÓRIOS e ocupar cada um deles com pelo menos dois exércitos.":
+                        Objetivo= new GameImage("data/gameplay/objectives2;18.png");
+                        break;
+                    case "Conquistar 24 TERRITÓRIOS à sua escolha.":
+                        Objetivo= new GameImage("data/gameplay/objectives2;24.png");
+                        break;
+                    case "Destruir totalmente OS EXÉRCITOS AZUIS ou conquistar 18 territórios caso ele não esteja em jogo.":
+                        Objetivo= new GameImage("data/gameplay/objectives03;AZUL.png");
+                        break;
+                    case "Destruir totalmente OS EXÉRCITOS AMARELOS ou conquistar 18 territórios caso ele não esteja em jogo.":
+                        Objetivo= new GameImage("data/gameplay/objectives3;AMARELO.png");
+                        break;
+                    case "Destruir totalmente OS EXÉRCITOS VERMELHOS ou conquistar 18 territórios caso ele não esteja em jogo.":
+                        Objetivo= new GameImage("data/gameplay/objectives3;VERMELHO.png");
+                        break;
+                    case "Destruir totalmente OS EXÉRCITOS PRETOS ou conquistar 18 territórios caso ele não esteja em jogo.":
+                        Objetivo= new GameImage("data/gameplay/objectives3;PRETO.png");
+                        break;
+                    case "Destruir totalmente OS EXÉRCITOS ROXOS ou conquistar 18 territórios caso ele não esteja em jogo.":
+                        Objetivo= new GameImage("data/gameplay/objectives3;ROXO.png");
+                        break;
+                    case "Destruir totalmente OS EXÉRCITOS VERDES ou conquistar 18 territórios caso ele não esteja em jogo.":
+                        Objetivo= new GameImage("data/gameplay/objectives3;VERDE.png");
+                        break;
+                    default:
+                        System.out.println("ERRO NA IMAGEM DA CARTA OBJETIVO: mensagem do objetivo nao existe no switch/case");     
+                }
+                Objetivo.setPosition(window.getWidth()/2-Objetivo.width/2, window.getHeight()/2-Objetivo.height/2);
+            }
+            
+            mostraObjetivo=true;
+                
         }
         else
         if (controller.getTerritory(indicePressed).getOwner().getId() == 0){
@@ -152,8 +206,13 @@ public class MapView {
 
 
         }
-
-       
+        
+        if(mouse.isLeftButtonPressed()&&mostraObjetivo){
+            this.background.draw();
+            mostraObjetivo=false;
+        }
+        if(mostraObjetivo)
+            Objetivo.draw();
            
    
         this.window.display();
