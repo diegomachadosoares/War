@@ -50,7 +50,6 @@ public class Distribuir_Dialog extends JDialog implements ActionListener {
         jogadorLabel = new javax.swing.JLabel();
         tropasLabel = new javax.swing.JLabel();
         paisLabel = new javax.swing.JLabel();
-        
         nomePaísrLabel = new javax.swing.JLabel();
         nomePaísrLabel.setText(controller.getTerritory(map.getIndice()).getName());
         numeroTropasLabel = new javax.swing.JLabel();
