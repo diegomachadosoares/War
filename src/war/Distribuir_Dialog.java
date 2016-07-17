@@ -81,9 +81,9 @@ public class Distribuir_Dialog extends JDialog implements ActionListener {
 
         jLabel2.setText("jLabel2");
 
-        jogadorLabel.setText("Jogador:");
+        jogadorLabel.setText("País:");
 
-        tropasLabel.setText("Tropas no Território :");
+        tropasLabel.setText("Tropas no Local :");
 
         paisLabel.setForeground(new java.awt.Color(255, 0, 0));
         paisLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
