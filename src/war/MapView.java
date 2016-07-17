@@ -159,7 +159,6 @@ public class MapView {
                 String quantidade = Integer.toString(territory.getTroops());
                 int posX = reader.nextInt()+buttons.get(i).getSprite().width/2; 
                 int posY = (int)(reader.nextInt()+buttons.get(i).getSprite().height*1.5);
-                //soldier[i].setPosition(posX-soldier[i].width, posY-buttons.get(i).getSprite().height*0.5);
                 soldier[i].setPosition(posX-soldier[i].width/4, posY-buttons.get(i).getSprite().height*0.5);
                 
                 switch(player.getColor()){
