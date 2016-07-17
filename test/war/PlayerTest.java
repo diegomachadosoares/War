@@ -68,5 +68,45 @@ public class PlayerTest {
         
         assertEquals(false, result);
     }
+    
+    
+    
+    @Test
+    public void testRemoveTerritoryMyTerritory(){
+        /*public boolean removeTerritory(Territory t){
+        if (this.territories.contains(t)){
+            this.territories.remove(t);
+            return true;
+        }        return false;     }*/
+        Player p = new Player("AAA", "Azul", 1);
+        int expected = 0;
+        
+        Territory mine = new Territory("Brazil", p, 1);
+        
+        p.addTerritory(mine);
+        p.removeTerritory(mine);
+        
+        assertEquals(0, p.getTerritories().size());
+        
+    }
+    
+    @Test
+    public void testRemoveTerritoryOtherTerritory(){
+        /*public boolean removeTerritory(Territory t){
+        if (this.territories.contains(t)){
+            this.territories.remove(t);
+            return true;        }
+        return false;    }*/
+        
+        Player p = new Player("AAA", "Azul", 1);
+        int expected = 0;
+        
+        Territory mine = new Territory("Brazil", p, 1);
+        
+        p.addTerritory(mine);
+        p.removeTerritory(mine);
+        
+        assertEquals(0, p.getTerritories().size());
+    }
 
 }

@@ -6,6 +6,7 @@
 
 package war;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -117,7 +118,7 @@ public class ControllerTest {
     /**
      * Test of getTerritory method, of class Controller.
      */
-    @Test
+//    @Test
     public void testGetTerritory() {
         System.out.println("getTerritory");
         Integer i = null;
@@ -132,7 +133,7 @@ public class ControllerTest {
     /**
      * Test of getContinent method, of class Controller.
      */
-    @Test
+//    @Test
     public void testGetContinent() {
         System.out.println("getContinent");
         Integer i = null;
@@ -255,13 +256,18 @@ public class ControllerTest {
         // First round - Fotification only
         for (int i = 1; i < players.size(); i++) {
             Player p = this.players.get(i);
-            distributeIATroops(p);
-        }
-    }
-    */    
+            distributeIATroops(p);         }     }     */
         System.out.println("startMatch");
-        Controller instance = null;
+        Controller instance = Controller.getInstance();
+        
+        instance.createHumanPlayer("AAA", "Azul");
+        instance.createAIPlayers(3);
         instance.startMatch();
+        
+        for (int i = 0; i < instance.getPlayers().size(); i++) {
+            
+        }
+        
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -312,5 +318,29 @@ public class ControllerTest {
         result = instance.changeState();
         
         assertEquals(expResult, result);
+    }
+    
+    @Test
+    
+    public void testElegerAlvos(){
+        Controller instance = Controller.getInstance();
+        
+        
+        
+        /*
+        public List<Territory> elegerAlvos(int indice) {
+        List<Territory> neighbors = getNeighborhood(indice);
+        ArrayList<Territory> target = new ArrayList();
+        for (int i = 0; i < neighbors.size(); i++) {
+            if (neighbors.get(i).getOwner().getId() == getTerritory(indice).getID()) {
+                target.add(getTerritory(indice));
+            }
+        }
+        return target;
+    }
+                */
+        
+        
+        
     }
 }
