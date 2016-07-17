@@ -183,8 +183,14 @@ public class Controller {
 
         }
     }
-    
-    public List getPlayers(){
+
+    public List getPlayers() {
         return this.players;
+    }
+
+    //Esse metodo foi criada apenas para testes 
+    //porque o singleton está causando conflitos entre os testes.
+    public static void clearStateForTesting() {
+        INSTANCE = null;
     }
 }
