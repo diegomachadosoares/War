@@ -42,6 +42,7 @@ public class MapView {
     private Keyboard keyboard;
     private Mouse mouse;
     private boolean backgroundDrawn;
+    private Sprite imagemDoJogador;
 
     public MapView(Window window) {
         this.window = window;
@@ -53,6 +54,7 @@ public class MapView {
         soldier = new Sprite[42];
         Objetivo=null;
         mostraObjetivo=false;
+        imagemDoJogador = new Sprite("data/gameplay/sprite soldados 100x100.png", 6);
 
         
         try {
@@ -228,6 +230,7 @@ public class MapView {
         }
         if(mostraObjetivo)
             Objetivo.draw();
+        desenhaSimboloDoJogador();
            
    
         this.window.display();
@@ -322,5 +325,31 @@ public class MapView {
         }
     }
     
-        
+    private void desenhaSimboloDoJogador(){
+        if(controller.getGameStarted()){
+            switch(controller.getPlayerById(5).getColor()){
+                    case "Amarelo":
+                        imagemDoJogador.setCurrFrame(5);
+                        break;
+                    case "Azul":
+                        imagemDoJogador.setCurrFrame(1);
+                        break;
+                    case "Roxo":
+                        imagemDoJogador.setCurrFrame(3);
+                        break;
+                    case "Preto":
+                        imagemDoJogador.setCurrFrame(0);
+                        break;
+                    case "Verde":
+                        imagemDoJogador.setCurrFrame(2);
+                        break;
+                    case "Vermelho":
+                        imagemDoJogador.setCurrFrame(4);
+                        break;
+                    default:
+                }
+            imagemDoJogador.setPosition(900-imagemDoJogador.width/2,300-imagemDoJogador.height/2);
+            imagemDoJogador.draw();
+        }
+    }    
 }
