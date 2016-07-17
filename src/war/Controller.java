@@ -195,7 +195,7 @@ public class Controller {
         INSTANCE = null;
     }
     
-    public void addTroops(Territory t, int nTroops){
-        board.getTerritory(t.getID()).addTroops(nTroops);
+    public void addTroops(int id, int nTroops){
+        board.getTerritory(id).addTroops(nTroops);
     }
 }
