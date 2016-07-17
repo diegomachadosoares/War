@@ -33,4 +33,12 @@ public class Objective {
         this(type, msg);
         this.nTerritories = nterritories;
     }
+    
+    public int getType() {
+        return this.type;
+    }
+    
+    public String getMSG(){
+        return this.msg;
+    }
 }
