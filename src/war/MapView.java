@@ -11,6 +11,7 @@ import JPlay.Mouse;
 import JPlay.Sprite;
 import JPlay.Window;
 import java.awt.Color;
+import java.awt.Font;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class MapView {
     private boolean pressed;
     private GameImage background;
     private GameImage hud;
+    private GameImage stageImage;
     //private Hud_Dialog menu_lateral = new Hud_Dialog();
     private GameImage shadow;
     private Sprite[] soldier;
@@ -46,6 +48,7 @@ public class MapView {
         this.mouse = window.getMouse();
         backgroundDrawn = false;
         soldier = new Sprite[42];
+
         
         try {
             File file = new File("data/pais_button.ini");
@@ -82,12 +85,13 @@ public class MapView {
             if(Controller.getInstance().getGameStarted())
                 escreveNumeros();
             
-            if( buttonPressed() != -1  ){
-            
-            pressed=true;
-            
+            if( buttonPressed() != -1  ){           
+                pressed=true;           
                 callRound();
             }
+            
+            callHudDraw();
+
             
             if (keyboard.keyDown(Keyboard.ESCAPE_KEY)) {
                 this.window.exit();
@@ -129,8 +133,9 @@ public class MapView {
         if(!backgroundDrawn){
             this.background.draw();
             backgroundDrawn=true;
+            this.hud.draw();
         }
-        this.hud.draw();
+
         for( int i = 0; i < buttons.size() ; i++){
           buttons.get(i).draw();
         }
@@ -140,10 +145,7 @@ public class MapView {
 
 
         }
-        
-        /*for(int i=0; i<42; i++){
-            soldier[i].draw();
-        }*/
+
        
            
    
@@ -216,4 +218,28 @@ public class MapView {
             System.out.println(ex.toString());
         }
     }
+
+    private void callHudDraw() {
+        if(controller.getState()==0){
+            stageImage = new GameImage("data/gameplay/distribuição.png");
+            stageImage.setPosition(900 - stageImage.width/2 , 20);
+            stageImage.draw();
+            window.drawText("Clique nos seus países", 830, 60, Color.black,Font.getFont("Verdana"));
+            window.drawText("para distribuir tropas", 840, 80, Color.black,Font.getFont("Verdana"));
+
+        }
+
+        else { hud.draw();
+        
+        } 
+        
+        if(controller.getState()==1){
+            stageImage = new GameImage("data/gameplay/ataque.png");
+            stageImage.setPosition(900 - stageImage.width/2 , 20);
+            stageImage.draw();
+            window.drawText("NÃO IMPLEMENTADO AINDA", 830, 60, Color.black,Font.getFont("Verdana"));
+            
+        }
+    }
+        
 }
