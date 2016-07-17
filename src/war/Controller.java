@@ -77,22 +77,22 @@ public class Controller {
     }
     
     public List<Territory> elegerAlvos( int indice ) {
-    List<Territory> alvos = getNeighborhood(indice);
-    ArrayList<Integer> positions = new ArrayList();
-    
-        for (int i = 0; i < alvos.size(); i++) {
-            if(alvos.get(i).getOwner().getId()==0){
-            positions.add(i);
+        List<Territory> alvos = getNeighborhood(indice);
+        ArrayList<Integer> positions = new ArrayList();
+
+            for (int i = 0; i < alvos.size(); i++) {
+                if(alvos.get(i).getOwner().getId()==0){
+                positions.add(i);
+                }
+
             }
-            
-        }
-    
-        for (int i = 0; i < positions.size(); i++) {
-            Territory t = alvos.get(positions.get(i));
-            alvos.remove(t);                        
-        }
-        
-    return alvos;
+
+            for (int i = 0; i < positions.size(); i++) {
+                Territory t = alvos.get(positions.get(i));
+                alvos.remove(t);                        
+            }
+
+        return alvos;
     }
     
     public Map getNeighborhoods() {
