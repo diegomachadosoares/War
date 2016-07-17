@@ -87,4 +87,8 @@ public class Match {
         } catch (FileNotFoundException e) {
         }
     }
+    
+    public List getPlayers(){
+        return this.players;
+    }
 }
