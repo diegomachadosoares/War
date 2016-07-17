@@ -23,6 +23,7 @@ import java.util.Scanner;
  */
 public class MapView {
     private Window window;
+    private Controller controller;
     private int indicePressed;
     private boolean pressed;
     private GameImage background;
@@ -39,6 +40,7 @@ public class MapView {
 
     public MapView(Window window) {
         this.window = window;
+        controller = Controller.getInstance();
         this.shadow = new GameImage("data/gameplay/shadow.png");
         this.keyboard = window.getKeyboard();
         this.mouse = window.getMouse();
@@ -80,12 +82,11 @@ public class MapView {
             if(Controller.getInstance().getGameStarted())
                 escreveNumeros();
             
-            if(buttonPressed() != -1){
+            if( buttonPressed() != -1  ){
             
             pressed=true;
-            Distribuir_Dialog frame = new Distribuir_Dialog(this);            
-            // Pais_Dialog frame = new Pais_Dialog(this);
-            frame.setVisible(true);
+            
+                callRound();
             }
             
             if (keyboard.keyDown(Keyboard.ESCAPE_KEY)) {
@@ -111,6 +112,17 @@ public class MapView {
         
      return indice;
             
+    }
+    
+    
+    public void callRound(){
+    if (controller.getTerritory(indicePressed).getOwner().getId() == 0){
+        if (controller.getState()==0){
+            Distribuir_Dialog frame = new Distribuir_Dialog(this);            
+            // Pais_Dialog frame = new Pais_Dialog(this);
+            frame.setVisible(true);
+            }
+    }
     }
     
     public void draw() {

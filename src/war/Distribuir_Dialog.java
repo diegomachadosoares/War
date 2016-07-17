@@ -29,6 +29,7 @@ public class Distribuir_Dialog extends JDialog implements ActionListener {
         
         meuInit();
         distribuiButton.addActionListener(this);
+        faseEndButton.addActionListener(this);
 
                 
         
@@ -67,6 +68,9 @@ public class Distribuir_Dialog extends JDialog implements ActionListener {
         jLabel4 = new javax.swing.JLabel();
         distribuiButton = new javax.swing.JButton();
         mensagemLabel = new javax.swing.JLabel();
+        mensagemLabel.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        mensagemLabel.setForeground(new java.awt.Color(255, 0, 0));
+        
         faseEndButton = new javax.swing.JButton();
 
         jTextField2.setText("jTextField2");
@@ -234,6 +238,9 @@ public class Distribuir_Dialog extends JDialog implements ActionListener {
 
         distribuiButton.setText("Distribuir");
 
+        mensagemLabel.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        mensagemLabel.setForeground(new java.awt.Color(255, 0, 0));
+
         faseEndButton.setText("Encerrar Fase");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -354,16 +361,24 @@ public class Distribuir_Dialog extends JDialog implements ActionListener {
         Object obj = e.getSource();
         if ( obj == distribuiButton ) {
         Boolean deuErro = validaCampo();
-        if (!deuErro){
+        if (deuErro==false){
             int tropas =  Integer.parseInt(qtdTextField.getText());
-            controller.addTroops(map.getIndice(),tropas) );
-
+            int disponivel = Integer.parseInt(tropasDisponivelLabel.getText()) - tropas ;
+            controller.setNTroops(0, disponivel);
+            tropasDisponivelLabel.setText(Integer.toString(disponivel));
+            
+            
+            controller.addTroops(map.getIndice(),tropas);         
+            numeroTropasLabel.setText(Integer.toString(controller.getTerritory(map.getIndice()).getTroops()));
+            
+            
         }
         
         }
         
         if ( obj == faseEndButton ) {
-        System.out.println("FUNCIONOU ?");
+        controller.changeState();
+        this.dispose();
         
         }
     }
@@ -371,33 +386,35 @@ public class Distribuir_Dialog extends JDialog implements ActionListener {
     private boolean validaCampo() {
 	boolean deuErro = false;
         
-        try {
-            int qtd = Integer.parseInt(qtdTextField.getText());
+        
 
 
             if (qtdTextField.getText().trim().length() == 0) {
                 deuErro = true;
                 mensagemLabel.setText("Campo de preenchimento obrigatório");
             } 
-
-            else if( qtd > 0  &&  qtd < Integer.parseInt( tropasDisponivelLabel.getText() ) ) {
-                deuErro = true;
-                mensagemLabel.setText("Não é possivel distribuir este numero de tropas");
-
-            }
-
-
-
             else {
-                qtdTextField.setText("");
+                mensagemLabel.setText("");
+                
+                
+                int qtd = Integer.parseInt(qtdTextField.getText());
+
+                if( qtd < 1 || qtd > Integer.parseInt( tropasDisponivelLabel.getText() ) ) {
+                    deuErro = true;
+                    mensagemLabel.setText("Não é possivel distribuir este numero de tropas");
+
+                }
+
+                else {
+                    mensagemLabel.setText("");
+                }
+                
             }
-        
-        }
-        
-        catch(NumberFormatException e){
             
+
+
         
-        }
+
         return deuErro;
     }
 }

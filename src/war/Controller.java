@@ -2,6 +2,7 @@ package war;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -74,7 +75,26 @@ public class Controller {
     public Map getContinents() {
         return board.getContinents();
     }
-
+    
+    public List<Territory> elegerAlvos( int indice ) {
+    List<Territory> alvos = getNeighborhood(indice);
+    ArrayList<Integer> positions = new ArrayList();
+    
+        for (int i = 0; i < alvos.size(); i++) {
+            if(alvos.get(i).getOwner().getId()==0){
+            positions.add(i);
+            }
+            
+        }
+    
+        for (int i = 0; i < positions.size(); i++) {
+            Territory t = alvos.get(positions.get(i));
+            alvos.remove(t);                        
+        }
+        
+    return alvos;
+    }
+    
     public Map getNeighborhoods() {
         return board.getNeighborhoods();
     }
@@ -183,6 +203,10 @@ public class Controller {
             this.players.get(i).setNTroops(nterr / 2);
 
         }
+    }
+    
+    public void setNTroops(int i , int j){
+    this.players.get(i).setNTroops(j);
     }
 
     public List getPlayers() {
