@@ -73,7 +73,8 @@ public class MapView {
             if(buttonPressed() != -1){
             
             pressed=true;
-            Pais_Dialog frame = new Pais_Dialog(this);
+            Distribuir_Dialog frame = new Distribuir_Dialog(this);            
+            // Pais_Dialog frame = new Pais_Dialog(this);
             frame.setVisible(true);
             }
             
