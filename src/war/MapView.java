@@ -8,7 +8,9 @@ package war;
 import JPlay.GameImage;
 import JPlay.Keyboard;
 import JPlay.Mouse;
+import JPlay.Sprite;
 import JPlay.Window;
+import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -25,19 +27,23 @@ public class MapView {
     private boolean pressed;
     private GameImage background;
     private GameImage hud;
-    // private Hud_Dialog menu_lateral = new Hud_Dialog();
+    //private Hud_Dialog menu_lateral = new Hud_Dialog();
     private GameImage shadow;
+    private Sprite[] soldier;
 
     List<Button> buttons = new ArrayList<Button>(); // Lista de botões
 
     private Keyboard keyboard;
     private Mouse mouse;
+    private boolean backgroundDrawn;
 
     public MapView(Window window) {
         this.window = window;
         this.shadow = new GameImage("data/gameplay/shadow.png");
         this.keyboard = window.getKeyboard();
         this.mouse = window.getMouse();
+        backgroundDrawn = false;
+        soldier = new Sprite[42];
         
         try {
             File file = new File("data/pais_button.ini");
@@ -45,15 +51,17 @@ public class MapView {
 
             int max = reader.nextInt();
             for (int i = 0; i < max; i++) {
-            buttons.add(new Button(reader.next(), reader.nextInt(), reader.nextInt(), this.mouse));
-
+                buttons.add(new Button(reader.next(), reader.nextInt(), reader.nextInt(), this.mouse));
+                soldier[i] = new Sprite("data/gameplay/sprite soldados 20x20.png", 6);
+                soldier[i].setPosition(1000,1000);  //para os soldados nao serem printados 
+                                                    //na tela antes do jogo começar
             }
             
         } catch (FileNotFoundException ex) {
             System.out.println(ex.toString());
         }
 
-       // menu_lateral.setVisible(true);
+        //menu_lateral.setVisible(true);
         
     }
 
@@ -69,6 +77,8 @@ public class MapView {
     public void run() {
         while (true) {
             this.draw();
+            if(Controller.getInstance().getGameStarted())
+                escreveNumeros();
             
             if(buttonPressed() != -1){
             
@@ -82,6 +92,7 @@ public class MapView {
                 this.window.exit();
                 
             }
+            
         }
     }
 
@@ -103,7 +114,10 @@ public class MapView {
     }
     
     public void draw() {
-        this.background.draw();
+        if(!backgroundDrawn){
+            this.background.draw();
+            backgroundDrawn=true;
+        }
         this.hud.draw();
         for( int i = 0; i < buttons.size() ; i++){
           buttons.get(i).draw();
@@ -114,6 +128,10 @@ public class MapView {
 
 
         }
+        
+        /*for(int i=0; i<42; i++){
+            soldier[i].draw();
+        }*/
        
            
    
@@ -130,8 +148,60 @@ public class MapView {
     
     public void escreveNumeros(){
         Controller controller = Controller.getInstance();
-        for (int i=0; i<42; i++){
+        try {
+            File file = new File("data/pais_button.ini");
+            Scanner reader = new Scanner(file);
+
+            int max = reader.nextInt();
+            for (int i = 0; i < max; i++) {
+                reader.next();
+                Territory territory = controller.getTerritory(i);
+                Player player = territory.getOwner();
+                String quantidade = Integer.toString(territory.getTroops());
+                int posX = reader.nextInt()+buttons.get(i).getSprite().width/2; 
+                int posY = (int)(reader.nextInt()+buttons.get(i).getSprite().height*1.5);
+                //soldier[i].setPosition(posX-soldier[i].width, posY-buttons.get(i).getSprite().height*0.5);
+                soldier[i].setPosition(posX-soldier[i].width/4, posY-buttons.get(i).getSprite().height*0.5);
+                
+                switch(player.getColor()){
+                    case "Amarelo":
+                        soldier[i].setCurrFrame(5);
+                        soldier[i].draw();
+                        window.drawText(quantidade, posX, posY+soldier[i].height/3, Color.BLACK);
+                        break;
+                    case "Azul":
+                        soldier[i].setCurrFrame(1);
+                        soldier[i].draw();
+                        window.drawText(quantidade, posX, posY+soldier[i].height/3, Color.BLACK);
+                        break;
+                    case "Roxo":
+                        soldier[i].setCurrFrame(3);
+                        soldier[i].draw();
+                        window.drawText(quantidade, posX, posY+soldier[i].height/3, Color.BLACK);
+                        break;
+                    case "Preto":
+                        soldier[i].setCurrFrame(0);
+                        soldier[i].draw();
+                        window.drawText(quantidade, posX, posY+soldier[i].height/3, Color.BLACK);
+                        break;
+                    case "Verde":
+                        soldier[i].setCurrFrame(2);
+                        soldier[i].draw();
+                        window.drawText(quantidade, posX, posY+soldier[i].height/3, Color.BLACK);
+                        break;
+                    case "Vermelho":
+                        soldier[i].setCurrFrame(4);
+                        soldier[i].draw();
+                        window.drawText(quantidade, posX, posY+soldier[i].height/3, Color.BLACK);
+                        break;
+                    default:
+                }
+                
+
+            }
             
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex.toString());
         }
     }
 }

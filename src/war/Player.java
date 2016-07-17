@@ -94,4 +94,21 @@ public class Player {
     public int getNTroops(){
         return this.nTroops;
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+        
+        Player player = (Player) obj;
+
+        return this.name.equalsIgnoreCase(player.getName())
+                && this.id == player.id
+                && this.color.equalsIgnoreCase(player.color);
+    }
 }
