@@ -30,9 +30,11 @@ public class MapView {
     private GameImage background;
     private GameImage hud;
     private GameImage stageImage;
+    private GameImage Objetivo;
     //private Hud_Dialog menu_lateral = new Hud_Dialog();
     private GameImage shadow;
     private Sprite[] soldier;
+    private boolean mostraObjetivo;
 
     List<Button> buttons = new ArrayList<Button>(); // Lista de botões
 
@@ -48,6 +50,8 @@ public class MapView {
         this.mouse = window.getMouse();
         backgroundDrawn = false;
         soldier = new Sprite[42];
+        Objetivo=null;
+        mostraObjetivo=false;
 
         
         try {
@@ -61,6 +65,7 @@ public class MapView {
                 soldier[i].setPosition(1000,1000);  //para os soldados nao serem printados 
                                                     //na tela antes do jogo começar
             }
+            buttons.add(new Button("data/gameplay/Botao Objetivo.png", 810, 540, this.mouse));
             
         } catch (FileNotFoundException ex) {
             System.out.println(ex.toString());
@@ -120,18 +125,76 @@ public class MapView {
     
     
     public void callRound(){
-    if (controller.getTerritory(indicePressed).getOwner().getId() == 0){
-        if (controller.getState()==0){
-            Distribuir_Dialog frame = new Distribuir_Dialog(this);            
-            // Pais_Dialog frame = new Pais_Dialog(this);
-            frame.setVisible(true);
-            }
         
-        if (controller.getState()==1){
-            Atacar_Dialog frame = new Atacar_Dialog(this);            
-            frame.setVisible(true);
+        if(indicePressed==42){
+            if(Objetivo==null){
+                switch(controller.getPlayerById(0).getObjective().getMSG()){
+                    case "Conquistar na totalidade a ASIA e a ÁFRICA.":
+                        Objetivo= new GameImage("data/gameplay/objectives0;4;3.png");
+                        break;
+                    case "Conquistar na totalidade a ASIA e a AMÉRICA DO SUL.":
+                        Objetivo= new GameImage("data/gameplay/objectives0;4;1.png");
+                        break;
+                    case "Conquistar na totalidade a AMÉRICA DO NORTE e a ÁFRICA.":
+                        Objetivo= new GameImage("data/gameplay/objectives0;0;3.png");
+                        break;
+                    case "Conquistar na totalidade a AMÉRICA DO NORTE e a AUSTRÁLIA.":
+                        Objetivo= new GameImage("data/gameplay/objectives0;0;5.png");
+                        break;
+                    case "Conquistar na totalidade a EUROPA, a AMÉRICA DO SUL e mais um terceiro.":
+                        Objetivo= new GameImage("data/gameplay/objectives1;2;1.png");
+                        break;
+                    case "Conquistar na totalidade a EUROPA, a AUSTRÁLIA e mais um terceiro.":
+                        Objetivo= new GameImage("data/gameplay/objectives1;2;5.png");
+                        break;
+                    case "Conquistar 18 TERRITÓRIOS e ocupar cada um deles com pelo menos dois exércitos.":
+                        Objetivo= new GameImage("data/gameplay/objectives2;18.png");
+                        break;
+                    case "Conquistar 24 TERRITÓRIOS à sua escolha.":
+                        Objetivo= new GameImage("data/gameplay/objectives2;24.png");
+                        break;
+                    case "Destruir totalmente OS EXÉRCITOS AZUIS ou conquistar 18 territórios caso ele não esteja em jogo.":
+                        Objetivo= new GameImage("data/gameplay/objectives03;AZUL.png");
+                        break;
+                    case "Destruir totalmente OS EXÉRCITOS AMARELOS ou conquistar 18 territórios caso ele não esteja em jogo.":
+                        Objetivo= new GameImage("data/gameplay/objectives3;AMARELO.png");
+                        break;
+                    case "Destruir totalmente OS EXÉRCITOS VERMELHOS ou conquistar 18 territórios caso ele não esteja em jogo.":
+                        Objetivo= new GameImage("data/gameplay/objectives3;VERMELHO.png");
+                        break;
+                    case "Destruir totalmente OS EXÉRCITOS PRETOS ou conquistar 18 territórios caso ele não esteja em jogo.":
+                        Objetivo= new GameImage("data/gameplay/objectives3;PRETO.png");
+                        break;
+                    case "Destruir totalmente OS EXÉRCITOS ROXOS ou conquistar 18 territórios caso ele não esteja em jogo.":
+                        Objetivo= new GameImage("data/gameplay/objectives3;ROXO.png");
+                        break;
+                    case "Destruir totalmente OS EXÉRCITOS VERDES ou conquistar 18 territórios caso ele não esteja em jogo.":
+                        Objetivo= new GameImage("data/gameplay/objectives3;VERDE.png");
+                        break;
+                    default:
+                        System.out.println("ERRO NA IMAGEM DA CARTA OBJETIVO: mensagem do objetivo nao existe no switch/case");     
+                }
+                Objetivo.setPosition(window.getWidth()/2-Objetivo.width/2, window.getHeight()/2-Objetivo.height/2);
             }
-    }
+            mostraObjetivo=true;
+                
+        }
+        else
+        if (controller.getTerritory(indicePressed).getOwner().getId() == 0){
+            if (controller.getState()==0){
+                Distribuir_Dialog frame = new Distribuir_Dialog(this);            
+                // Pais_Dialog frame = new Pais_Dialog(this);
+                frame.setVisible(true);
+                }
+        }
+        else if (controller.getTerritory(indicePressed).getOwner().getId() == 1){
+            if (controller.getState()==0){
+                Atacar_Dialog frame = new Atacar_Dialog(this);            
+                // Pais_Dialog frame = new Pais_Dialog(this);
+                frame.setVisible(true);
+                }
+        }
+        
     }
     
     public void draw() {
@@ -150,8 +213,13 @@ public class MapView {
 
 
         }
-
-       
+        
+        if(mouse.isLeftButtonPressed()&&mostraObjetivo){
+            this.background.draw();
+            mostraObjetivo=false;
+        }
+        if(mostraObjetivo)
+            Objetivo.draw();
            
    
         this.window.display();
@@ -179,7 +247,6 @@ public class MapView {
                 String quantidade = Integer.toString(territory.getTroops());
                 int posX = reader.nextInt()+buttons.get(i).getSprite().width/2; 
                 int posY = (int)(reader.nextInt()+buttons.get(i).getSprite().height*1.5);
-                //soldier[i].setPosition(posX-soldier[i].width, posY-buttons.get(i).getSprite().height*0.5);
                 soldier[i].setPosition(posX-soldier[i].width/4, posY-buttons.get(i).getSprite().height*0.5);
                 
                 switch(player.getColor()){

@@ -39,6 +39,7 @@ public class BoardTest {
 
     @Before
     public void setUp() {
+        Controller.clearStateForTesting();
     }
 
     @After
@@ -84,10 +85,31 @@ public class BoardTest {
     
     @Test
     public void testTerritoriesDistribution(){
+    /*        public void distributeTerritories(List<Player> players) {
+        Controller controller = Controller.getInstance();
+        int territoriesCount = 0;
+            for (int j = 0; j < territories.size(); j++) {
+                if (territoriesCount == players.size()) {
+                    territoriesCount = territoriesCount % players.size();                }
+                Territory t = territories.get(j);
+                Player p = controller.getPlayerById(territoriesCount);                
+                t.setOwner(p);
+                controller.getPlayerById(territoriesCount).addTerritory(t);
+                territories.put(j, t);
+                territoriesCount++;            }
+            for (int i = 0; i < controller.getPlayerById(0).getTerritories().size(); i++) {
+                System.out.println(controller.getPlayerById(0).getTerritories().get(i).getName());        }    }         */
+        
         List<Player> players = new LinkedList<>();
         players.add(new Player("AAA","Azul",0));
         players.add(new Player("BBB","Preto",1));
         players.add(new Player("CCC","Vermelho",2));
+        
+        Controller controller = Controller.getInstance();
+        controller.createHumanPlayer("AAA", "Azul");
+        controller.createHumanPlayer("BBB", "Preto");
+        controller.createHumanPlayer("CCC", "Vermelho");
+        
         this.board.distributeTerritories(players);
         
         for(Object t : this.board.getTerritories().values()){
