@@ -30,6 +30,7 @@ public class MapView {
     private GameImage background;
     private GameImage hud;
     private GameImage stageImage;
+    private GameImage Objetivo;
     //private Hud_Dialog menu_lateral = new Hud_Dialog();
     private GameImage shadow;
     private Sprite[] soldier;
@@ -61,6 +62,7 @@ public class MapView {
                 soldier[i].setPosition(1000,1000);  //para os soldados nao serem printados 
                                                     //na tela antes do jogo começar
             }
+            buttons.add(new Button("data/gameplay/Botao Objetivo.png", 810, 540, this.mouse));
             
         } catch (FileNotFoundException ex) {
             System.out.println(ex.toString());
@@ -120,13 +122,18 @@ public class MapView {
     
     
     public void callRound(){
-    if (controller.getTerritory(indicePressed).getOwner().getId() == 0){
-        if (controller.getState()==0){
-            Distribuir_Dialog frame = new Distribuir_Dialog(this);            
-            // Pais_Dialog frame = new Pais_Dialog(this);
-            frame.setVisible(true);
-            }
-    }
+        
+        if(indicePressed==42){
+            System.out.println(controller.getPlayerById(0));
+        }
+        else
+        if (controller.getTerritory(indicePressed).getOwner().getId() == 0){
+            if (controller.getState()==0){
+                Distribuir_Dialog frame = new Distribuir_Dialog(this);            
+                // Pais_Dialog frame = new Pais_Dialog(this);
+                frame.setVisible(true);
+                }
+        }
     }
     
     public void draw() {
