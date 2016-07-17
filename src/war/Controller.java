@@ -194,4 +194,8 @@ public class Controller {
     public static void clearStateForTesting() {
         INSTANCE = null;
     }
+    
+    public void addTroops(int id, int nTroops){
+        board.getTerritory(id).addTroops(nTroops);
+    }
 }
