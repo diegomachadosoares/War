@@ -176,7 +176,6 @@ public class MapView {
                 }
                 Objetivo.setPosition(window.getWidth()/2-Objetivo.width/2, window.getHeight()/2-Objetivo.height/2);
             }
-            
             mostraObjetivo=true;
                 
         }

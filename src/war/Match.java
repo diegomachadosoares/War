@@ -37,9 +37,11 @@ public class Match {
     
     public void distributeObjectives(String objectiveFile) {
         initializeObjectives(objectiveFile);
+        int random;
         for (int i = 0; i < players.size(); i++) {
-            //FIXME -> Make me random!
-            this.players.get(i).setObjective(this.objectives.get(i));
+            random=(int)(Math.random()*(objectives.size()-1));
+            this.players.get(i).setObjective(this.objectives.get(random));
+            objectives.remove(random);
         }
     }
 
