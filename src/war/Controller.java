@@ -201,7 +201,6 @@ public class Controller {
         for (int i = 0; i < this.players.size(); i++) {
             int nterr = this.players.get(i).getTerritories().size();
             this.players.get(i).setNTroops(nterr / 2);
-
         }
     }
     
@@ -221,5 +220,11 @@ public class Controller {
     
     public void addTroops(int id, int nTroops){
         board.getTerritory(id).addTroops(nTroops);
+    }
+    
+    public Territory[] battle(Territory att, int nTroops,  Territory def){
+        Battle b = new Battle(att, def);
+        Territory[] winners = b.attack(nTroops);
+        return winners;
     }
 }
