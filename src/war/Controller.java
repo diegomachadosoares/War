@@ -2,6 +2,7 @@ package war;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -73,6 +74,17 @@ public class Controller {
 
     public Map getContinents() {
         return board.getContinents();
+    }
+
+    public List<Territory> elegerAlvos(int indice) {
+        List<Territory> neighbors = getNeighborhood(indice);
+        ArrayList<Territory> target = new ArrayList();
+        for (int i = 0; i < neighbors.size(); i++) {
+            if (neighbors.get(i).getOwner().getId() == getTerritory(indice).getID()) {
+                target.add(getTerritory(indice));
+            }
+        }
+        return target;
     }
 
     public Map getNeighborhoods() {
@@ -185,6 +197,10 @@ public class Controller {
         }
     }
 
+    public void setNTroops(int i, int j) {
+        this.players.get(i).setNTroops(j);
+    }
+
     public List getPlayers() {
         return this.players;
     }
@@ -193,5 +209,9 @@ public class Controller {
     //porque o singleton está causando conflitos entre os testes.
     public static void clearStateForTesting() {
         INSTANCE = null;
+    }
+
+    public void addTroops(int id, int nTroops) {
+        board.getTerritory(id).addTroops(nTroops);
     }
 }
