@@ -76,24 +76,20 @@ public class Controller {
         return board.getContinents();
     }
     
-    public List<Territory> elegerAlvos( int indice ) {
-    List<Territory> alvos = getNeighborhood(indice);
-    ArrayList<Integer> positions = new ArrayList();
-    
-        for (int i = 0; i < alvos.size(); i++) {
-            if(alvos.get(i).getOwner().getId()==0){
-            positions.add(i);
+
+  
+      public List<Territory> elegerAlvos(int indice) {
+          List<Territory> neighbors = getNeighborhood(indice);
+          ArrayList<Territory> target = new ArrayList();
+          for (int i = 0; i < neighbors.size(); i++) {
+              if (neighbors.get(i).getOwner().getId() == getTerritory(indice).getID()) {
+                  target.add(getTerritory(indice));
+
             }
-            
-        }
-    
-        for (int i = 0; i < positions.size(); i++) {
-            Territory t = alvos.get(positions.get(i));
-            alvos.remove(t);                        
-        }
-        
-    return alvos;
-    }
+          }         
+          return target;
+
+      }
     
     public Map getNeighborhoods() {
         return board.getNeighborhoods();

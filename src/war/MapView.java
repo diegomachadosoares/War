@@ -126,6 +126,11 @@ public class MapView {
             // Pais_Dialog frame = new Pais_Dialog(this);
             frame.setVisible(true);
             }
+        
+        if (controller.getState()==1){
+            Atacar_Dialog frame = new Atacar_Dialog(this);            
+            frame.setVisible(true);
+            }
     }
     }
     
