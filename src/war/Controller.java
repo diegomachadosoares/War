@@ -156,6 +156,7 @@ public class Controller {
     public int changeState() {
         if (this.state == 2) {
             this.state = 0;
+            return this.state;
         }
         this.state++;
         return this.state;
