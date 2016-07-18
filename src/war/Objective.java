@@ -41,4 +41,8 @@ public class Objective {
     public String getMSG(){
         return this.msg;
     }
+    
+    public String getColor(){
+        return this.color;
+    }
 }
