@@ -252,7 +252,6 @@ public class MapView {
         if(mouse.isLeftButtonPressed()&&mostraCartas){
             mostraCartas=false;
             this.background.draw();
-            System.out.println("passa aki PORRA");
         }
         if(mostraCartas){
             fundoPrasCartas.draw();
