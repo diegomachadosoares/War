@@ -24,7 +24,7 @@ public class Battle {
     }
 
     public Territory[] attack(int nTroops) {
-        for (int i = 0; i <= nTroops; i++) {
+        for (int i = 0; i < nTroops; i++) {
             this.att_dices[i] = Dice.playDice();
         }
         int lim;
