@@ -63,7 +63,7 @@ public class Battle {
                 ret[i] = this.att;
             } else {
                 ret[i] = this.def;
-                this.def.subTroop();
+                this.att.subTroop();
             }
         }
         return ret;
