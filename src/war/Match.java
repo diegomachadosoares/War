@@ -42,7 +42,6 @@ public class Match {
             random=(int)(Math.random()*(objectives.size()-1));
             if(objectives.get(random).getColor()!=null)
                 while(objectives.get(random).getColor().equalsIgnoreCase(players.get(i).getColor())){
-                    System.out.println(players.get(i).getColor()+" tirou carta da propria cor: "+objectives.get(random).getColor());
                     random=(int)(Math.random()*(objectives.size()-1));
                     if(objectives.get(random).getColor()==null)
                         break;

@@ -32,7 +32,7 @@ public class MapView {
     private GameImage stageImage;
     private GameImage Objetivo;
     private GameImage fundoPrasCartas;
-    private List<GameImage> Cartas;
+    private GameImage[] cartas;
     //private Hud_Dialog menu_lateral = new Hud_Dialog();
     private GameImage shadow;
     private Sprite[] soldier;
@@ -57,6 +57,7 @@ public class MapView {
         this.mouse = window.getMouse();
         backgroundDrawn = false;
         soldier = new Sprite[42];
+        cartas = new GameImage[5];
         Objetivo=null;
         mostraObjetivo=false;
         mostraCartas=false;
@@ -64,6 +65,11 @@ public class MapView {
         fundoPrasCartas = new GameImage("data/gameplay/fundo pras cartas.png");
         fundoPrasCartas.setPosition(800/2-fundoPrasCartas.width/2, 600/2-fundoPrasCartas.height/2);
         xButton = new Button("data/gameplay/Botao x.png", 800/2+fundoPrasCartas.width/2-40, 600/2-fundoPrasCartas.height/2, mouse);
+        objectiveButton = new Button("data/gameplay/Botao Objetivo.png", 810, 540, this.mouse);
+        cartasButton = new Button("data/gameplay/Botao Cartas.png", 910, 540, this.mouse);
+        for(int i = 0; i<5; i++){
+            cartas[i]=null;
+        }
         
         try {
             File file = new File("data/pais_button.ini");
@@ -76,8 +82,7 @@ public class MapView {
                 soldier[i].setPosition(1000,1000);  //para os soldados nao serem printados 
                                                     //na tela antes do jogo começar
             }
-            objectiveButton = new Button("data/gameplay/Botao Objetivo.png", 810, 540, this.mouse);
-            cartasButton = new Button("data/gameplay/Botao Cartas.png", 910, 540, this.mouse);
+            
             
         } catch (FileNotFoundException ex) {
             System.out.println(ex.toString());
@@ -393,5 +398,24 @@ public class MapView {
 
     private void cartasButtonsActions() {
         mostraCartas=true;
+        //desenhaCartas();
+    }
+    
+    private void desenhaCartas(){
+        //fixme
+        for (int i = 0; i < controller.getPlayerById(5).getCards().size(); i++) {
+            String aux=null; 
+            if(controller.getPlayerById(5).getCards().get(i)!=null)
+                aux = controller.getPlayerById(5).getCards().get(i).getTerritory().getName();
+            if(aux==null)
+                cartas[i]=null;
+            cartas[i]=new GameImage("/data/gameplay/"+aux+" Card.png");
+        }
+        for (int i = 0; i < 5; i++){
+            if(cartas[i]!=null){
+                cartas[i].setDimension(55, 90);
+                cartas[i].setPosition(fundoPrasCartas.x+5*(i+1), fundoPrasCartas.y+5);
+            }
+        }
     }
 }

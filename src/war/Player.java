@@ -111,4 +111,8 @@ public class Player {
                 && this.id == player.id
                 && this.color.equalsIgnoreCase(player.color);
     }
+    
+    public LinkedList<Card> getCards(){
+        return cards;
+    }
 }
