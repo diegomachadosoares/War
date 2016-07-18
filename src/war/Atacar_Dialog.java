@@ -231,7 +231,12 @@ public class Atacar_Dialog extends JDialog implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Object obj = e.getSource();
         if ( obj == atacarButton ) {
-       
+            Boolean deuErro = validaCampo();
+            if(!deuErro){
+            int um_alvo = alvosCombox.getSelectedIndex();
+            int um_alvo_real = alvosIndice.get(um_alvo);
+            
+            }
         }
         
         if ( obj == faseEndButton ) {
