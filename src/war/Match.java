@@ -38,11 +38,19 @@ public class Match {
     public void distributeObjectives(String objectiveFile) {
         initializeObjectives(objectiveFile);
         int random;
-        for (int i = 0; i < players.size(); i++) {
+        for (int i = 0; i<players.size(); i++){
             random=(int)(Math.random()*(objectives.size()-1));
+            if(objectives.get(random).getColor()!=null)
+                while(objectives.get(random).getColor().equalsIgnoreCase(players.get(i).getColor())){
+                    System.out.println(players.get(i).getColor()+" tirou carta da propria cor: "+objectives.get(random).getColor());
+                    random=(int)(Math.random()*(objectives.size()-1));
+                    if(objectives.get(random).getColor()==null)
+                        break;
+                }
             this.players.get(i).setObjective(this.objectives.get(random));
             objectives.remove(random);
         }
+        
     }
 
     public int exchangeCards(Card card1, Card card2, Card card3) {
