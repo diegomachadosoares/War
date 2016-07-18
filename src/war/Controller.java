@@ -77,7 +77,8 @@ public class Controller {
     }
     
     public List<Territory> elegerAlvos( int indice ) {
-    List<Territory> alvos = getNeighborhood(indice);
+    List<Territory> alvos = new ArrayList<>();
+    alvos = getNeighborhood(indice);
     ArrayList<Integer> positions = new ArrayList();
     
         for (int i = 0; i < alvos.size(); i++) {

@@ -327,6 +327,7 @@ public class MapView {
     
     private void desenhaSimboloDoJogador(){
         if(controller.getGameStarted()){
+            //era pra ser getPlayerById(0)???
             switch(controller.getPlayerById(5).getColor()){
                     case "Amarelo":
                         imagemDoJogador.setCurrFrame(5);
