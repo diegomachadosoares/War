@@ -19,7 +19,6 @@ public class Board {
     private final Map<Integer, Continent> continents;
     private final Map<Integer, Territory> territories;
     private final Map<Integer, List<Territory>> neighborhood;
-   
 
     public Board(String continentsFile, String territoriesFile, String neighborhoodFile) throws FileNotFoundException, IOException {
         this.continents = new HashMap<>();
@@ -27,7 +26,7 @@ public class Board {
         this.neighborhood = new HashMap<>();
         readTerritories(territoriesFile);
         readContinents(continentsFile);
-        //readNeighborhood(neighborhoodFile);
+        readNeighborhood(neighborhoodFile);
     }
 
     private void readTerritories(String territoriesFile) throws FileNotFoundException {
@@ -65,6 +64,7 @@ public class Board {
     }
 
     private void readNeighborhood(String neighborhoodFile) throws FileNotFoundException {
+        System.out.println("Lendo a vizinhança no arquivo : "+neighborhoodFile);
         Scanner sc = new Scanner(new FileInputStream(new File(neighborhoodFile)));
         String currline;
         String[] split;
@@ -112,7 +112,7 @@ public class Board {
     public Map getContinents() {
         return this.continents;
     }
-    
+
     public Map getNeighborhoods() {
         return this.neighborhood;
     }
@@ -120,11 +120,11 @@ public class Board {
     public Territory getTerritory(Integer i) {
         return this.territories.get(i);
     }
-    
+
     public Continent getContinent(Integer i) {
         return this.continents.get(i);
     }
-    
+
     public List<Territory> getNeighborhood(Integer i) {
         return this.neighborhood.get(i);
     }
