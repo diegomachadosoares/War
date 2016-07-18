@@ -38,29 +38,29 @@ public class Winners_Dialog extends javax.swing.JFrame implements ActionListener
         
         if(winners[1]!=null){
             if(winners[1].getOwner().getId()==0){
-                attack_dice01.setText("Ganhou");
-                attack_dice01.setForeground(Color.GREEN);
-                defense_dice01.setText("Perdeu");
-                defense_dice01.setForeground(Color.RED);
-            }   else { attack_dice01.setText("Perdeu");
-                defense_dice01.setText("Ganhou");
-                defense_dice01.setForeground(Color.GREEN);
-                attack_dice01.setText("Perdeu");
-                attack_dice01.setForeground(Color.RED);
+                defense_dice02.setText("Ganhou");
+                defense_dice02.setForeground(Color.GREEN);
+                defense_dice02.setText("Perdeu");
+                defense_dice02.setForeground(Color.RED);
+            }   else { defense_dice02.setText("Perdeu");
+                defense_dice02.setText("Ganhou");
+                defense_dice02.setForeground(Color.GREEN);
+                defense_dice02.setText("Perdeu");
+                defense_dice02.setForeground(Color.RED);
                 }
         }
                 
         if(winners[2]!=null){
             if(winners[2].getOwner().getId()==0){
-                attack_dice01.setText("Ganhou");
-                attack_dice01.setForeground(Color.GREEN);
-                defense_dice01.setText("Perdeu");
-                defense_dice01.setForeground(Color.RED);
-            }   else { attack_dice01.setText("Perdeu");
-                defense_dice01.setText("Ganhou");
-                defense_dice01.setForeground(Color.GREEN);
-                attack_dice01.setText("Perdeu");
-                attack_dice01.setForeground(Color.RED);
+                attack_dice03.setText("Ganhou");
+                attack_dice03.setForeground(Color.GREEN);
+                defense_dice03.setText("Perdeu");
+                defense_dice03.setForeground(Color.RED);
+            }   else { attack_dice03.setText("Perdeu");
+                defense_dice03.setText("Ganhou");
+                defense_dice03.setForeground(Color.GREEN);
+                attack_dice03.setText("Perdeu");
+                attack_dice03.setForeground(Color.RED);
                 }
         }
 
@@ -89,7 +89,7 @@ public class Winners_Dialog extends javax.swing.JFrame implements ActionListener
         defense_dice01 = new javax.swing.JLabel();
         okButton = new javax.swing.JButton();
         attack_dice2 = new javax.swing.JLabel();
-        attack_dice02 = new javax.swing.JLabel();
+        defense_dice02 = new javax.swing.JLabel();
         attack_dice01 = new javax.swing.JLabel();
         attack_dice6 = new javax.swing.JLabel();
         defense_dice03 = new javax.swing.JLabel();
@@ -135,7 +135,7 @@ public class Winners_Dialog extends javax.swing.JFrame implements ActionListener
 
         attack_dice2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        attack_dice02.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        defense_dice02.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         attack_dice01.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
@@ -176,7 +176,7 @@ public class Winners_Dialog extends javax.swing.JFrame implements ActionListener
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(attack_dice2, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
-                                    .addComponent(attack_dice02, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE))
+                                    .addComponent(defense_dice02, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(attack_dice03, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -213,7 +213,7 @@ public class Winners_Dialog extends javax.swing.JFrame implements ActionListener
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(attack_dice2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(attack_dice02, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(defense_dice02, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(attack_dice03, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -242,11 +242,11 @@ public class Winners_Dialog extends javax.swing.JFrame implements ActionListener
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel attack_dice01;
-    private javax.swing.JLabel attack_dice02;
     private javax.swing.JLabel attack_dice03;
     private javax.swing.JLabel attack_dice2;
     private javax.swing.JLabel attack_dice6;
     private javax.swing.JLabel defense_dice01;
+    private javax.swing.JLabel defense_dice02;
     private javax.swing.JLabel defense_dice03;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

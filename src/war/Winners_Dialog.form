@@ -81,7 +81,7 @@
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="attack_dice2" pref="54" max="32767" attributes="0"/>
-                                  <Component id="attack_dice02" pref="54" max="32767" attributes="0"/>
+                                  <Component id="defense_dice02" pref="54" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -133,7 +133,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="attack_dice2" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="attack_dice02" min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="defense_dice02" min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="attack_dice03" min="-2" pref="23" max="-2" attributes="0"/>
@@ -222,7 +222,7 @@
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="attack_dice02">
+    <Component class="javax.swing.JLabel" name="defense_dice02">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
