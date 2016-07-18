@@ -212,13 +212,19 @@ public class MapView {
                 // Pais_Dialog frame = new Pais_Dialog(this);
                 frame.setVisible(true);
                 }
-        
 
-        else if (controller.getState()==1){
-                Atacar_Dialog frame = new Atacar_Dialog(this);            
+
+            else if (controller.getState()==1){
+                    Atacar_Dialog frame = new Atacar_Dialog(this);            
+                    // Pais_Dialog frame = new Pais_Dialog(this);
+                    frame.setVisible(true);
+                    }
+
+            else if (controller.getState()==2){
+                Mover_Dialog frame = new Mover_Dialog(this);            
                 // Pais_Dialog frame = new Pais_Dialog(this);
                 frame.setVisible(true);
-                }
+            }
         }
         
     }

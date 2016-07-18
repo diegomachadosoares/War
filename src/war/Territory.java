@@ -43,6 +43,10 @@ class Territory {
         this.troops += n;
     }
     
+    void removeTroops(int n){
+        this.troops -= n;
+    }
+    
     // If troops == 1 return else subtract 1  troop
     int subTroop(){
         if (this.troops == 1) {
