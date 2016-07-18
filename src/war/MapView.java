@@ -42,6 +42,7 @@ public class MapView {
     List<Button> buttons = new ArrayList<Button>(); // Lista de botões
     private Button objectiveButton;
     private Button cartasButton;
+    private Button xButton;
 
     private Keyboard keyboard;
     private Mouse mouse;
@@ -62,7 +63,7 @@ public class MapView {
         imagemDoJogador = new Sprite("data/gameplay/sprite soldados 100x100.png", 6);
         fundoPrasCartas = new GameImage("data/gameplay/fundo pras cartas.png");
         fundoPrasCartas.setPosition(800/2-fundoPrasCartas.width/2, 600/2-fundoPrasCartas.height/2);
-
+        xButton = new Button("data/gameplay/Botao x.png", 800/2+fundoPrasCartas.width/2-40, 600/2-fundoPrasCartas.height/2, mouse);
         
         try {
             File file = new File("data/pais_button.ini");
@@ -113,7 +114,11 @@ public class MapView {
             objectiveButton.draw();
             cartasButton.draw();
             
-            
+            if(xButton.isButtonPressed()){
+                mostraCartas=false;
+                backgroundDrawn=false;
+            }
+                
             if (keyboard.keyDown(Keyboard.ESCAPE_KEY)) {
                 this.window.exit();
                 
@@ -261,6 +266,7 @@ public class MapView {
         }
         if(mostraCartas){
             fundoPrasCartas.draw();
+            xButton.draw();
             //há implementar Cartas.draw();
         }
    
