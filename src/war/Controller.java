@@ -80,8 +80,8 @@ public class Controller {
         List<Territory> neighbors = getNeighborhood(indice);
         ArrayList<Territory> target = new ArrayList();
         for (int i = 0; i < neighbors.size(); i++) {
-            if (neighbors.get(i).getOwner().getId() == getTerritory(indice).getOwner().getId()) {
-                target.add(getTerritory(indice));
+            if (neighbors.get(i).getOwner().getId() != getTerritory(indice).getOwner().getId()) {
+                target.add(neighbors.get(i));
 
             }
         }
