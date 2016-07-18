@@ -238,8 +238,8 @@ public class Atacar_Dialog extends JDialog implements ActionListener {
             int um_alvo = alvosCombox.getSelectedIndex();
             int um_alvo_real = alvosIndice.get(um_alvo);
             Territory[] winners = controller.battle(map.getIndice(), qtd , um_alvo_real);
-            Winners_Dialog dialog = new Winners_Dialog(winners);
-            dialog.setVisible(true);
+            //Winners_Dialog dialog = new Winners_Dialog(winners);
+            //dialog.setVisible(true);
             
             numeroTropasLabel.setText(Integer.toString(controller.getTerritory(map.getIndice()).getTroops()));
             this.dispose();
