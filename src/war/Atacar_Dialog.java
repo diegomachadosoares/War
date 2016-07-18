@@ -8,6 +8,7 @@ package war;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -21,10 +22,11 @@ public class Atacar_Dialog extends JDialog implements ActionListener {
         private MapView map;
         private Controller controller;
         private List<Territory> alvos;
-        List <Integer> alvosIndice;
+        List<Integer> alvosIndice;
         
     public Atacar_Dialog(MapView map) {
         controller = Controller.getInstance();
+        alvosIndice = new ArrayList<>();
         this.map=map;
 	setBounds(550, 300, 618, 330);
 	getContentPane().setLayout(null);                
@@ -32,13 +34,12 @@ public class Atacar_Dialog extends JDialog implements ActionListener {
         initComponents();
         
                 // ---- Acessa nome do País e numero de tropas
-        nomePaísrLabel = new javax.swing.JLabel();
         nomePaísrLabel.setText(controller.getTerritory(map.getIndice()).getName());
-        numeroTropasLabel = new javax.swing.JLabel();
         numeroTropasLabel.setText(Integer.toString(controller.getTerritory(map.getIndice()).getTroops()));
         // -----------------
         
         constroiAlvos();
+        System.out.println("AQUI ?");
         atacarButton.addActionListener(this);
         faseEndButton.addActionListener(this);
 
@@ -235,7 +236,7 @@ public class Atacar_Dialog extends JDialog implements ActionListener {
             if(!deuErro){
             int um_alvo = alvosCombox.getSelectedIndex();
             int um_alvo_real = alvosIndice.get(um_alvo);
-            
+
             }
         }
         
@@ -252,7 +253,12 @@ public class Atacar_Dialog extends JDialog implements ActionListener {
     private void constroiAlvos() {
         alvosCombox.removeAllItems();
         alvos = controller.elegerAlvos(map.getIndice());
-        
+        for (int i = 0; i < alvos.size(); i++) {
+        System.out.println("2");
+            System.out.println(alvos.get(i).getName());
+       
+            System.out.println("OI");
+        }
         for (int i = 0; i < alvos.size(); i++) {
         alvosCombox.addItem( alvos.get(i).getName() );
         alvosIndice.add( alvos.get(i).getID() );
@@ -276,10 +282,21 @@ public class Atacar_Dialog extends JDialog implements ActionListener {
                 
                 
                 int qtd = Integer.parseInt(qtdTextField.getText());
+                System.out.println(qtdTextField.getText());
 
-                if( qtd < 1 || qtd > Integer.parseInt( numeroTropasLabel.getText())-1 ) {
+                if( qtd < 1 || qtd > ( Integer.parseInt( numeroTropasLabel.getText()) - 1 ) ) {
                     deuErro = true;
-                    mensagemLabel.setText("Não é possivel distribuir este numero de tropas");
+                    mensagemLabel.setText("Não é possivel atacar com este numero de tropas");
+
+                }
+
+                else {
+                    mensagemLabel.setText("");
+                }
+                
+                if( qtd > 3 ) {
+                    deuErro = true;
+                    mensagemLabel.setText("Você só pode atacar com no maximo 3 tropas");
 
                 }
 
