@@ -247,6 +247,8 @@ public class Mover_Dialog extends JDialog implements ActionListener {
         }
         
         if ( obj == faseEndButton ) {
+        controller.gainTroops();
+        controller.startIARound();
         controller.changeState();
         this.dispose();
         

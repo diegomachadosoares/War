@@ -239,10 +239,9 @@ public class Atacar_Dialog extends JDialog implements ActionListener {
             int um_alvo_real = alvosIndice.get(um_alvo);
             Territory[] winners = new Territory[3];
             winners = controller.battle(map.getIndice(), qtd , um_alvo_real);
-            
-            nomePaísrLabel.setText(controller.getTerritory(map.getIndice()).getName());
+
             numeroTropasLabel.setText(Integer.toString(controller.getTerritory(map.getIndice()).getTroops()));
-            
+
             }
         }
         
@@ -259,9 +258,7 @@ public class Atacar_Dialog extends JDialog implements ActionListener {
     private void constroiAlvos() {
         alvosCombox.removeAllItems();
         alvos = controller.elegerAlvos(map.getIndice());
-        for (int i = 0; i < alvos.size(); i++) {
-            System.out.println(alvos.get(i).getName());
-        }
+        
         for (int i = 0; i < alvos.size(); i++) {
         alvosCombox.addItem( alvos.get(i).getName() );
         alvosIndice.add( alvos.get(i).getID() );
