@@ -82,7 +82,17 @@ public class Controller {
         for (int i = 0; i < neighbors.size(); i++) {
             if (neighbors.get(i).getOwner().getId() != getTerritory(indice).getOwner().getId()) {
                 target.add(neighbors.get(i));
-
+            }
+        }
+        return target;
+    }
+    
+    public List<Territory> elegerDeslocamento(int indice) {
+        List<Territory> neighbors = getNeighborhood(indice);
+        ArrayList<Territory> target = new ArrayList();
+        for (int i = 0; i < neighbors.size(); i++) {
+            if (neighbors.get(i).getOwner().getId() == getTerritory(indice).getOwner().getId()) {
+                target.add(neighbors.get(i));
             }
         }
         return target;
