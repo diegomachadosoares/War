@@ -53,7 +53,7 @@ public class Battle {
     private Territory[] checkWinner(int[] att, int[] def) {
         Territory[] ret = new Territory[3];
         int defTroops =0;
-        for (int i = 3; i <= 0; i--) {
+        for (int i = 2; i >= 0; i--) {
             if (att[i] > def[i]) {
                 defTroops = this.def.subTroop();
                 if (defTroops==1){
