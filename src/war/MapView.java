@@ -345,7 +345,9 @@ public class MapView {
     }
 
     private void callHudDraw() {
+        
         if(controller.getState()==0){
+            hud.draw();
             stageImage = new GameImage("data/gameplay/distribuição.png");
             stageImage.setPosition(900 - stageImage.width/2 , 20);
             stageImage.draw();
@@ -354,17 +356,34 @@ public class MapView {
 
         }
 
-        else { hud.draw();
+        else { 
         
         } 
         
         if(controller.getState()==1){
+            hud.draw();
             stageImage = new GameImage("data/gameplay/ataque.png");
             stageImage.setPosition(900 - stageImage.width/2 , 20);
             stageImage.draw();
-            window.drawText("NÃO IMPLEMENTADO AINDA", 830, 60, Color.black,Font.getFont("Verdana"));
-            
+            window.drawText("Clique nos seus países", 830, 60, Color.black,Font.getFont("Verdana"));
+            window.drawText("para escolher seus alvos de ataque", 802, 80, Color.black,Font.getFont("Verdana"));
+           
         }
+        
+        
+        if(controller.getState()==2){
+            hud.draw();
+            stageImage = new GameImage("data/gameplay/Movimentação.png");
+            stageImage.setPosition(900 - stageImage.width/2 , 20);
+            stageImage.draw();
+            window.drawText("Clique nos seus países", 830, 60, Color.black,Font.getFont("Verdana"));
+            window.drawText("para movimentar suas tropas ", 815, 80, Color.black,Font.getFont("Verdana"));
+            window.drawText("entre os territórios", 845, 100, Color.black,Font.getFont("Verdana"));
+           
+        }
+ 
+                
+                
     }
     
     private void desenhaSimboloDoJogador(){
