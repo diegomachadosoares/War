@@ -417,24 +417,19 @@ public class MapView {
 
     private void cartasButtonsActions() {
         mostraCartas=true;
-        //desenhaCartas();
+        desenhaCartas();
     }
     
     private void desenhaCartas(){
-        //fixme
+        
         for (int i = 0; i < controller.getPlayerById(5).getCards().size(); i++) {
-            String aux=null; 
-            if(controller.getPlayerById(5).getCards().get(i)!=null)
-                aux = controller.getPlayerById(5).getCards().get(i).getTerritory().getName();
-            if(aux==null)
-                cartas[i]=null;
+            
+            String aux = controller.getPlayerById(5).getCards().get(i).getTerritory().getName();
             cartas[i]=new GameImage("/data/gameplay/"+aux+" Card.png");
         }
-        for (int i = 0; i < 5; i++){
-            if(cartas[i]!=null){
-                cartas[i].setDimension(55, 90);
-                cartas[i].setPosition(fundoPrasCartas.x+5*(i+1), fundoPrasCartas.y+5);
-            }
+        for (int i = 0; i < controller.getPlayerById(5).getCards().size(); i++){
+            cartas[i].setDimension(55, 90);
+            cartas[i].setPosition(fundoPrasCartas.x+5*(i+1), fundoPrasCartas.y+5);
         }
     }
 }
