@@ -17,14 +17,14 @@ import javax.swing.JFrame;
  *
  * @author msndo
  */
-public class Atacar_Dialog extends JDialog implements ActionListener {
+public class Mover_Dialog extends JDialog implements ActionListener {
 
         private MapView map;
         private Controller controller;
-        private List<Territory> alvos;
+        private List<Territory> aliados;
         List<Integer> alvosIndice;
         
-    public Atacar_Dialog(MapView map) {
+    public Mover_Dialog(MapView map) {
         controller = Controller.getInstance();
         alvosIndice = new ArrayList<>();
         this.map=map;
@@ -38,9 +38,9 @@ public class Atacar_Dialog extends JDialog implements ActionListener {
         numeroTropasLabel.setText(Integer.toString(controller.getTerritory(map.getIndice()).getTroops()));
         // -----------------
         
-        constroiAlvos();
-        System.out.println("AQUI ?");
-        atacarButton.addActionListener(this);
+        constroiAliados();
+
+        moverButton.addActionListener(this);
         faseEndButton.addActionListener(this);
 
                 
@@ -70,9 +70,9 @@ public class Atacar_Dialog extends JDialog implements ActionListener {
         numeroTropasLabel = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        atacarButton = new javax.swing.JButton();
+        moverButton = new javax.swing.JButton();
         faseEndButton = new javax.swing.JButton();
-        alvosCombox = new javax.swing.JComboBox<>();
+        aliadosCombox = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         qtdTextField = new javax.swing.JTextField();
         mensagemLabel = new javax.swing.JLabel();
@@ -89,20 +89,20 @@ public class Atacar_Dialog extends JDialog implements ActionListener {
 
         tropasLabel.setText("Tropas no Território :");
 
-        jLabel3.setText("Atacar Território :");
+        jLabel3.setText("Mover para :");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("ATAQUE A TERRITÓRIO INIMIGO");
+        jLabel4.setText("MOVIMENTAÇÃO DE TROPAS");
 
-        atacarButton.setText("Atacar");
+        moverButton.setText("Mover");
 
         faseEndButton.setText("Encerrar Fase");
 
-        alvosCombox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        alvosCombox.addActionListener(new java.awt.event.ActionListener() {
+        aliadosCombox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        aliadosCombox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                alvosComboxActionPerformed(evt);
+                aliadosComboxActionPerformed(evt);
             }
         });
 
@@ -129,7 +129,7 @@ public class Atacar_Dialog extends JDialog implements ActionListener {
                         .addGap(18, 18, 18)
                         .addComponent(qtdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(atacarButton))
+                        .addComponent(moverButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addComponent(faseEndButton, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -151,7 +151,7 @@ public class Atacar_Dialog extends JDialog implements ActionListener {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(alvosCombox, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(aliadosCombox, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(58, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(mensagemLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -173,12 +173,12 @@ public class Atacar_Dialog extends JDialog implements ActionListener {
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(alvosCombox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(aliadosCombox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(qtdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(atacarButton))
+                    .addComponent(moverButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mensagemLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -189,9 +189,9 @@ public class Atacar_Dialog extends JDialog implements ActionListener {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void alvosComboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alvosComboxActionPerformed
+    private void aliadosComboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aliadosComboxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_alvosComboxActionPerformed
+    }//GEN-LAST:event_aliadosComboxActionPerformed
 
     private void qtdTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qtdTextFieldActionPerformed
         // TODO add your handling code here:
@@ -203,8 +203,7 @@ public class Atacar_Dialog extends JDialog implements ActionListener {
      
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> alvosCombox;
-    private javax.swing.JButton atacarButton;
+    private javax.swing.JComboBox<String> aliadosCombox;
     private javax.swing.JButton faseEndButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -216,6 +215,7 @@ public class Atacar_Dialog extends JDialog implements ActionListener {
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JLabel jogadorLabel;
     private javax.swing.JLabel mensagemLabel;
+    private javax.swing.JButton moverButton;
     private javax.swing.JLabel nomePaísrLabel;
     private javax.swing.JLabel numeroTropasLabel;
     private javax.swing.JTextField qtdTextField;
@@ -231,12 +231,18 @@ public class Atacar_Dialog extends JDialog implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Object obj = e.getSource();
-        if ( obj == atacarButton ) {
+        if ( obj == moverButton ) {
             Boolean deuErro = validaCampo();
-            if(!deuErro){
-            int um_alvo = alvosCombox.getSelectedIndex();
-            int um_alvo_real = alvosIndice.get(um_alvo);
-
+            int qtd = Integer.parseInt(qtdTextField.getText());
+            if(deuErro == false){
+            int um_aliado = aliadosCombox.getSelectedIndex();
+            int um_aliado_real = alvosIndice.get(um_aliado);
+            controller.getTerritory(map.getIndice()).removeTroops(qtd);
+            controller.addTroops( um_aliado_real , qtd );
+            
+            nomePaísrLabel.setText(controller.getTerritory(map.getIndice()).getName());
+            numeroTropasLabel.setText(Integer.toString(controller.getTerritory(map.getIndice()).getTroops()));
+            
             }
         }
         
@@ -250,18 +256,16 @@ public class Atacar_Dialog extends JDialog implements ActionListener {
 
 
 
-    private void constroiAlvos() {
-        alvosCombox.removeAllItems();
-        alvos = controller.elegerAlvos(map.getIndice());
-        for (int i = 0; i < alvos.size(); i++) {
-        System.out.println("2");
-            System.out.println(alvos.get(i).getName());
-       
-            System.out.println("OI");
+    private void constroiAliados() {
+        aliadosCombox.removeAllItems();
+        aliados = controller.elegerDeslocamento(map.getIndice());
+        for (int i = 0; i < aliados.size(); i++) {
+            System.out.println(aliados.get(i).getName());
         }
-        for (int i = 0; i < alvos.size(); i++) {
-        alvosCombox.addItem( alvos.get(i).getName() );
-        alvosIndice.add( alvos.get(i).getID() );
+        for (int i = 0; i < aliados.size(); i++) {
+        aliadosCombox.addItem( aliados.get(i).getName() );
+        alvosIndice.add( aliados.get(i).getID() );
+            System.out.println(aliados.get(i).getID());
             
         }
 
@@ -286,22 +290,12 @@ public class Atacar_Dialog extends JDialog implements ActionListener {
 
                 if( qtd < 1 || qtd > ( Integer.parseInt( numeroTropasLabel.getText()) - 1 ) ) {
                     deuErro = true;
-                    mensagemLabel.setText("Não é possivel atacar com este numero de tropas");
+                    mensagemLabel.setText("Não é possivel mover com este numero de tropas");
 
                 }
 
                 else {
-                    mensagemLabel.setText("");
-                }
-                
-                if( qtd > 3 ) {
-                    deuErro = true;
-                    mensagemLabel.setText("Você só pode atacar com no maximo 3 tropas");
-
-                }
-
-                else {
-                    mensagemLabel.setText("");
+                    mensagemLabel.setText("");                
                 }
                 
             }

@@ -233,10 +233,16 @@ public class Atacar_Dialog extends JDialog implements ActionListener {
         Object obj = e.getSource();
         if ( obj == atacarButton ) {
             Boolean deuErro = validaCampo();
-            if(!deuErro){
+            int qtd = Integer.parseInt(qtdTextField.getText());
+            if(deuErro == false){
             int um_alvo = alvosCombox.getSelectedIndex();
             int um_alvo_real = alvosIndice.get(um_alvo);
-
+            Territory[] winners = new Territory[3];
+            winners = controller.battle(map.getIndice(), qtd , um_alvo_real);
+            
+            nomePaísrLabel.setText(controller.getTerritory(map.getIndice()).getName());
+            numeroTropasLabel.setText(Integer.toString(controller.getTerritory(map.getIndice()).getTroops()));
+            
             }
         }
         
@@ -254,14 +260,12 @@ public class Atacar_Dialog extends JDialog implements ActionListener {
         alvosCombox.removeAllItems();
         alvos = controller.elegerAlvos(map.getIndice());
         for (int i = 0; i < alvos.size(); i++) {
-        System.out.println("2");
             System.out.println(alvos.get(i).getName());
-       
-            System.out.println("OI");
         }
         for (int i = 0; i < alvos.size(); i++) {
         alvosCombox.addItem( alvos.get(i).getName() );
         alvosIndice.add( alvos.get(i).getID() );
+            System.out.println(alvos.get(i).getID());
             
         }
 
@@ -292,16 +296,18 @@ public class Atacar_Dialog extends JDialog implements ActionListener {
 
                 else {
                     mensagemLabel.setText("");
-                }
                 
-                if( qtd > 3 ) {
-                    deuErro = true;
-                    mensagemLabel.setText("Você só pode atacar com no maximo 3 tropas");
+                
+                    if( qtd > 3 ) {
+                        deuErro = true;
+                        mensagemLabel.setText("Você só pode atacar com no maximo 3 tropas");
 
-                }
+                    }
 
-                else {
-                    mensagemLabel.setText("");
+                    else {
+                        mensagemLabel.setText("");
+                    }
+                
                 }
                 
             }

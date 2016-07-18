@@ -99,7 +99,7 @@ public class Board {
             }
             for (int i = 0; i < controller.getPlayerById(0).getTerritories().size(); i++) {
             
-                System.out.println(controller.getPlayerById(0).getTerritories().get(i).getName());
+
         }
 
 
