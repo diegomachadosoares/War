@@ -31,13 +31,17 @@ public class MapView {
     private GameImage hud;
     private GameImage stageImage;
     private GameImage Objetivo;
+    private GameImage fundoPrasCartas;
+    private List<GameImage> Cartas;
     //private Hud_Dialog menu_lateral = new Hud_Dialog();
     private GameImage shadow;
     private Sprite[] soldier;
     private boolean mostraObjetivo;
+    private boolean mostraCartas;
 
     List<Button> buttons = new ArrayList<Button>(); // Lista de botões
     private Button objectiveButton;
+    private Button cartasButton;
 
     private Keyboard keyboard;
     private Mouse mouse;
@@ -54,7 +58,10 @@ public class MapView {
         soldier = new Sprite[42];
         Objetivo=null;
         mostraObjetivo=false;
+        mostraCartas=false;
         imagemDoJogador = new Sprite("data/gameplay/sprite soldados 100x100.png", 6);
+        fundoPrasCartas = new GameImage("data/gameplay/fundo pras cartas.png");
+        fundoPrasCartas.setPosition(800/2-fundoPrasCartas.width/2, 600/2-fundoPrasCartas.height/2);
 
         
         try {
@@ -69,6 +76,7 @@ public class MapView {
                                                     //na tela antes do jogo começar
             }
             objectiveButton = new Button("data/gameplay/Botao Objetivo.png", 810, 540, this.mouse);
+            cartasButton = new Button("data/gameplay/Botao Cartas.png", 910, 540, this.mouse);
             
         } catch (FileNotFoundException ex) {
             System.out.println(ex.toString());
@@ -98,10 +106,12 @@ public class MapView {
                 callRound();
             }
             objectiveButtonPressed();
+            cardsButtonPressed();
             
             callHudDraw();
             
             objectiveButton.draw();
+            cartasButton.draw();
             
             
             if (keyboard.keyDown(Keyboard.ESCAPE_KEY)) {
@@ -129,8 +139,14 @@ public class MapView {
             
     }
     public void objectiveButtonPressed(){
-        if(objectiveButton.isButtonPressed()){
+        if(objectiveButton.isButtonPressed()&&controller.getGameStarted()){
             objectiveButtonsActions();
+        }
+    }
+    
+    public void cardsButtonPressed(){
+        if(cartasButton.isButtonPressed()&&controller.getGameStarted()){
+            cartasButtonsActions();
         }
     }
     
@@ -231,7 +247,17 @@ public class MapView {
         if(mostraObjetivo)
             Objetivo.draw();
         desenhaSimboloDoJogador();
-           
+        
+        
+        if(mouse.isLeftButtonPressed()&&mostraCartas){
+            mostraCartas=false;
+            this.background.draw();
+            System.out.println("passa aki PORRA");
+        }
+        if(mostraCartas){
+            fundoPrasCartas.draw();
+            //há implementar Cartas.draw();
+        }
    
         this.window.display();
     }
@@ -353,4 +379,8 @@ public class MapView {
             imagemDoJogador.draw();
         }
     }    
+
+    private void cartasButtonsActions() {
+        mostraCartas=true;
+    }
 }
